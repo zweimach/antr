@@ -1,0 +1,22 @@
+{
+  "name": "antr-client",
+  "private": true,
+  "dependencies": {
+    "apollo-boost": "^0.4.3",
+    "date-fns": "^2.0.0-beta.2",
+    "graphql": "^14.4.2",
+    "i18next": "^17.0.6",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
+    "react-dom": "^16.8.6",
+    "react-i18next": "^10.11.4",
+    "react-redux": "^7.1.0",
+    "react-router5": "^7.1.0",
+    "redux": "^4.0.4",
+    "refract-redux-rxjs": "^1.4.0",
+    "refract-rxjs": "^4.2.1",
+    "router5": "^7.0.2",
+    "router5-plugin-browser": "^7.0.2",
+    "rxjs": "^6.5.2"
+  }
+}

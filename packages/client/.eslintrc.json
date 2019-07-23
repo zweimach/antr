@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true,
+    "node": false
+  },
+  "extends": ["plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "react-hooks", "jsx-a11y"]
+}

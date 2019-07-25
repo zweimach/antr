@@ -45,3 +45,22 @@
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 }
+
+.card-items {
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 0.2rem;
+  list-style-type: none;
+  text-align: center;
+}
+
+.item-holder {
+  padding: 0.25rem;
+}
+
+.card-item {
+  background-color: rgb(253, 143, 0);
+  border-radius: 4px;
+  padding: 0.5rem 0.25rem;
+}

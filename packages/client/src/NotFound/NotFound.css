@@ -1,0 +1,12 @@
+@import url(../shared/styles/variables.css);
+
+.text-box {
+  background: rgb(192, 10, 10);
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.main-text {
+  color: var(--primary-text);
+  font-size: 4rem;
+}

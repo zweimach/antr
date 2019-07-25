@@ -13,7 +13,7 @@ function Layout({ children }: Props) {
     <>
       <Header />
       <div className={styles.layoutContainer}>
-        {children}
+        <main className={styles.appContent}>{children}</main>
         <Footer />
       </div>
     </>

@@ -1,26 +1,55 @@
 import React from "react";
 
-import styles from "./HelpCenter.css";
-import Layout from "../Layout";
 import MenuCard from "./MenuCard";
 
 function HelpCenter() {
   const cardList = [
-    { id: 0, name: "NPWP" },
-    { id: 1, name: "Faktur & Surat Lain" },
-    { id: 2, name: "SPT" },
-    { id: 3, name: "NPWP Usahawan" },
-    { id: 4, name: "Informasi & Helpdesk" }
+    {
+      id: 0,
+      name: "NPWP",
+      items: [
+        "Pendaftaran NPWP OP (Non Usahawan)",
+        "Permohonan Perubahan Data NPWP",
+        "Permohonan PKP",
+        "Permohonan Penetapan NE",
+        "Permohonan Penghapusan NPWP",
+        "Cetak Ulang NPWP"
+      ]
+    },
+    {
+      id: 1,
+      name: "Faktur & Surat Lain",
+      items: [
+        "Faktur Pajak",
+        "Sertifikat Elektronik",
+        "Surat Permohonan Lainnya"
+      ]
+    },
+    {
+      id: 2,
+      name: "SPT",
+      items: ["Pelaporan SPT Masa", "Pelaporan SPT Tahunan"]
+    },
+    {
+      id: 3,
+      name: "NPWP Usahawan",
+      items: ["Pendaftaran NPWP OP Usahawan"]
+    },
+    {
+      id: 4,
+      name: "Informasi & Helpdesk",
+      items: ["Informasi Perpajakan", "Konsultasi Perpajakan"]
+    }
   ];
 
   return (
-    <Layout>
-      <main className={styles.appContent}>
-        {cardList.map(({ id, name }) => (
-          <MenuCard key={id}>{name}</MenuCard>
-        ))}
-      </main>
-    </Layout>
+    <>
+      {cardList.map(({ id, name, items }) => (
+        <MenuCard key={id} items={items}>
+          {name}
+        </MenuCard>
+      ))}
+    </>
   );
 }
 

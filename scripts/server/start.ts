@@ -9,7 +9,10 @@ const compiler = webpack(createConfig(true));
 const devServer = new Server(
   webpackDevMiddleware(compiler, {
     logLevel: "silent",
-    publicPath: ""
+    publicPath: "",
+    watchOptions: {
+      aggregateTimeout: 2000
+    }
   })
 );
 

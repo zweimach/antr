@@ -1,0 +1,61 @@
+@import url(../../shared/styles/variables.css);
+
+.app-header {
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  margin: 0;
+  display: flex;
+  padding: 0.5rem 1rem;
+}
+
+.logo-holder {
+  flex: 0 0 4rem;
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+  width: 7rem;
+}
+
+.title-holder {
+  flex: 1 1 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.title,
+.subtitle {
+  display: block;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.clock-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.clock {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.date {
+  font-size: 1rem;
+  margin: 0;
+}

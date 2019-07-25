@@ -1,0 +1,6 @@
+.layout-container {
+  height: calc(100vh - 133.7px);
+
+  display: flex;
+  flex-direction: column;
+}

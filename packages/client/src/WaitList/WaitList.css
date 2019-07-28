@@ -1,0 +1,53 @@
+@import url(../shared/styles/variables.css);
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: 1fr 1fr;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.counterCall {
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-basis: 15%;
+}
+
+.callText {
+  color: var(--primary-color);
+  font-size: 200%;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.video-player {
+  margin: 0.5rem;
+}
+
+.video {
+  width: 100%;
+}
+
+.main-text {
+  color: var(--primary-text);
+  font-size: 4rem;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+}

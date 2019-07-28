@@ -10,6 +10,10 @@ const routes: Route[] = [
   {
     name: "HelpCenter",
     path: "/helpcenter"
+  },
+  {
+    name: "WaitList",
+    path: "/waitlist"
   }
 ];
 

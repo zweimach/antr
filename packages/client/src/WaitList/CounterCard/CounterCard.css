@@ -1,0 +1,68 @@
+@import url(../../shared/styles/variables.css);
+
+.card-platform {
+  background-color: transparent;
+  /* height: auto; */
+  min-height: 200px;
+  width: calc(100% / 4);
+  flex-basis: calc(100% / 4);
+  margin: 0 4px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 3px rgba(25, 25, 25, 0.7);
+  transition: box-shadow 500ms;
+}
+
+.card-header {
+  width: 100%;
+  height: 30%;
+  background-color: var(--primary-color);
+  background-size: 8rem;
+  background-repeat: no-repeat;
+  background-position: right top;
+  padding: 1rem;
+  display: flex;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-title {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card-content {
+  width: 100%;
+  height: 70%;
+  background-color: var(--secondary-color);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-caption {
+  color: var(--primary-color);
+  font-size: 3rem;
+  margin: 0;
+}
+
+.card-items {
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 0.2rem;
+  list-style-type: none;
+  text-align: center;
+}
+
+.item-holder {
+  padding: 0.25rem;
+}
+
+.card-item {
+  background-color: rgb(253, 143, 0);
+  border-radius: 4px;
+  padding: 0.5rem 0.25rem;
+}

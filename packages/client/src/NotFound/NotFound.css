@@ -1,4 +1,4 @@
-@import url(../shared/styles/variables.css);
+@import "../shared/styles/variables.css";
 
 .text-box {
   background: rgb(192, 10, 10);

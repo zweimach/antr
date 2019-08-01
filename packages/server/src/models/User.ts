@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne
+} from "typeorm";
+
+import Counter from "./Counter";
 
 @Entity({ name: "User" })
 export default class User extends BaseEntity {
@@ -22,4 +30,7 @@ export default class User extends BaseEntity {
     type: "varchar"
   })
   public fullname: string;
+
+  @OneToOne(() => Counter, counter => counter.user)
+  public counter: Counter;
 }

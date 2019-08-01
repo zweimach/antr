@@ -1,23 +1,23 @@
 import { Connection, createConnection } from "typeorm";
 
-import { UserAccount } from "../models";
+import { User } from "../models";
 
 const database = (process.env.DB_NAME as string) || "antr";
 const host = (process.env.DB_HOST as string) || "0.0.0.0";
-const port = parseInt(process.env.DB_PORT as string) || 5432;
-const username = (process.env.DB_USERNAME as string) || "";
+const port = parseInt(process.env.DB_PORT as string) || 3306;
+const username = (process.env.DB_USERNAME as string) || "root";
 const password = (process.env.DB_PASSWORD as string) || "";
 
 async function startDatabase(): Promise<Connection | void> {
   try {
     return await createConnection({
-      type: "postgres",
+      type: "mariadb",
       database,
       host,
       port,
       username,
       password,
-      entities: [UserAccount],
+      entities: [User],
       logging: ["error", "log"],
       synchronize: true
     });

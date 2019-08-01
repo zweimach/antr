@@ -1,8 +1,8 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({ name: "UserAccount" })
-export default class UserAccount extends BaseEntity {
-  @PrimaryGeneratedColumn({ type: "integer" })
+@Entity({ name: "User" })
+export default class User extends BaseEntity {
+  @PrimaryGeneratedColumn({ type: "int" })
   public id: number;
 
   @Column({

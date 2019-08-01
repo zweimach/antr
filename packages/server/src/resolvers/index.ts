@@ -1,7 +1,7 @@
 import { IResolvers } from "graphql-tools";
 
-import userAccountResolver from "./userAccountResolver";
+import userResolver from "./userResolver";
 
-const resolvers: IResolvers[] = [userAccountResolver];
+const resolvers: IResolvers[] = [userResolver];
 
 export default resolvers;

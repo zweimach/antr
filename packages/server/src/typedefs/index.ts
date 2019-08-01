@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 import { DocumentNode } from "graphql";
 
 const typedefs: DocumentNode = gql`
-  type UserAccount {
+  type User {
     id: ID!
     username: String!
     password: String!
@@ -10,17 +10,17 @@ const typedefs: DocumentNode = gql`
   }
 
   type Query {
-    getUserAccount(username: String!): UserAccount
-    getAllUserAccounts: [UserAccount]
+    getUser(username: String!): User
+    getAllUsers: [User]
   }
 
   type Mutation {
-    addUserAccount(
+    addUser(
       id: ID!
       username: String!
       password: String!
       fullname: String!
-    ): [UserAccount]
+    ): [User]
   }
 `;
 

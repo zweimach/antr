@@ -1,0 +1,75 @@
+@import "../shared/styles/variables.css";
+
+:global html,
+:global body,
+:global #root {
+  height: 100%;
+}
+
+.header {
+  font-size: 1.2rem;
+  display: flex;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  box-shadow: 0 2px 2px rgba(10, 10, 10, 0.7);
+}
+
+.container {
+  flex: 1 0 0;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.button-group {
+  display: flex;
+}
+
+.button {
+  font-size: 1rem;
+  background-color: transparent;
+  border: 3px solid transparent;
+  color: var(--primary-text);
+  min-width: 6vw;
+  margin: 0;
+  padding: 0;
+}
+
+.button:hover {
+  border-bottom-color: var(--secondary-color);
+}
+
+.content {
+  /* height: 100%; */
+  height: calc(100% - 70px);
+  width: 100%;
+  display: grid;
+  padding: 0.5rem;
+  grid-template-columns: 35% auto;
+  grid-template-rows: auto;
+  grid-gap: 0.5rem;
+}
+
+.profile {
+  height: 100%;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px 2px gray;
+  grid-column: 1/2;
+  text-align: center;
+}
+
+.wait-list {
+  height: 100%;
+  background-color: transparent;
+  /* border-radius: 3px; */
+  /* box-shadow: 2px 2px 2px 2px gray; */
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}

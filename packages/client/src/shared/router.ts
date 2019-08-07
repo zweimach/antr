@@ -8,6 +8,10 @@ const routes: Route[] = [
     path: "/"
   },
   {
+    name: "Dashboard",
+    path: "/dashboard"
+  },
+  {
     name: "HelpCenter",
     path: "/helpcenter"
   },

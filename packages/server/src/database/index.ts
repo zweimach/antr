@@ -1,6 +1,6 @@
 import { Connection, createConnection } from "typeorm";
 
-import { User } from "../models";
+import { User, Counter, Queue, Service } from "../models";
 
 const database = (process.env.DB_NAME as string) || "antr";
 const host = (process.env.DB_HOST as string) || "0.0.0.0";
@@ -17,7 +17,7 @@ async function startDatabase(): Promise<Connection | void> {
       port,
       username,
       password,
-      entities: [User],
+      entities: [Counter, Queue, Service, User],
       logging: ["error", "log"],
       synchronize: true
     });

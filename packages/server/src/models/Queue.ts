@@ -23,7 +23,7 @@ export default class Queue extends BaseEntity {
     type: "boolean",
     default: false
   })
-  public isDone: boolean = false;
+  public isDone: boolean;
 
   @CreateDateColumn()
   public timestamp: Date;

@@ -14,7 +14,7 @@ export default class Server {
     this.server = express();
   }
 
-  public async start(port: number = 4000) {
+  public async start(port = 4000) {
     await startDatabase();
 
     const schema = makeExecutableSchema({ typeDefs, resolvers });

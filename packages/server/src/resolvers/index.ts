@@ -1,15 +1,6 @@
-import { IResolvers } from "graphql-tools";
+import CounterResolver from "./Counter.resolver";
+import QueueResolver from "./Queue.resolver";
+import ServiceResolver from "./Service.resolver";
+import UserResolver from "./User.resolver";
 
-import counterResolver from "./counterResolver";
-import queueResolver from "./queueResolver";
-import serviceResolver from "./serviceResolver";
-import userResolver from "./userResolver";
-
-const resolvers: IResolvers[] = [
-  counterResolver,
-  queueResolver,
-  serviceResolver,
-  userResolver
-];
-
-export default resolvers;
+export { CounterResolver, QueueResolver, ServiceResolver, UserResolver };

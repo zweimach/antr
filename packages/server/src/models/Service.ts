@@ -1,15 +1,9 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  OneToMany
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 import Queue from "./Queue";
 
 @Entity({ name: "Service" })
-export default class Service extends BaseEntity {
+export default class Service {
   @PrimaryGeneratedColumn({ type: "int" })
   public id: number;
 

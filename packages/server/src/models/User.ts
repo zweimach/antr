@@ -1,15 +1,9 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  OneToOne
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from "typeorm";
 
 import Counter from "./Counter";
 
 @Entity({ name: "User" })
-export default class User extends BaseEntity {
+export default class User {
   @PrimaryGeneratedColumn({ type: "int" })
   public id: number;
 

@@ -1,5 +1,4 @@
 import {
-  BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
   ManyToOne,
@@ -10,7 +9,7 @@ import {
 import Service from "./Service";
 
 @Entity({ name: "Queue" })
-export default class Queue extends BaseEntity {
+export default class Queue {
   @PrimaryGeneratedColumn({ type: "int" })
   public id: number;
 

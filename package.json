@@ -64,6 +64,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.18.2",
+    "sql.js": "^1.0.0",
     "style-loader": "^1.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-css-modules": "^1.4.0",
@@ -87,7 +88,10 @@
     "start:server": "ts-node scripts/server/start.ts",
     "build:client": "ts-node scripts/client/build.ts",
     "build:server": "ts-node scripts/server/build.ts",
-    "test": "jest --config jest.config.json"
+    "test": "jest --config jest.config.json",
+    "test:watch": "jest --config jest.config.json --watch",
+    "test:watchAll": "jest --config jest.config.json --watchAll",
+    "test:coverage": "jest --config jest.config.json --coverage"
   },
   "husky": {
     "hooks": {

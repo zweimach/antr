@@ -29,4 +29,10 @@ export default class Queue {
 
   @ManyToOne(() => Service, service => service.queues)
   public service: Service;
+
+  public constructor(columns?: Partial<Queue>) {
+    if (columns) {
+      Object.assign(this, columns);
+    }
+  }
 }

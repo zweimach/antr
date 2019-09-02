@@ -27,4 +27,10 @@ export default class User {
 
   @OneToOne(() => Counter, counter => counter.user)
   public counter: Counter;
+
+  public constructor(columns?: Partial<User>) {
+    if (columns) {
+      Object.assign(this, columns);
+    }
+  }
 }

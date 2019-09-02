@@ -22,4 +22,10 @@ export default class Service {
 
   @OneToMany(() => Queue, queue => queue.service)
   public queues: Queue[];
+
+  public constructor(columns?: Partial<Service>) {
+    if (columns) {
+      Object.assign(this, columns);
+    }
+  }
 }

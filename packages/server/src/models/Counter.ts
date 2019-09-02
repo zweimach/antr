@@ -22,4 +22,10 @@ export default class Counter {
   @OneToOne(() => User, user => user.counter)
   @JoinColumn()
   public user: User;
+
+  public constructor(columns?: Partial<Counter>) {
+    if (columns) {
+      Object.assign(this, columns);
+    }
+  }
 }

@@ -9,7 +9,7 @@ export default class Service {
 
   @Column({
     length: 1,
-    type: "char",
+    type: "varchar",
     unique: true
   })
   public type: string;

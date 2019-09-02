@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn
+} from "typeorm";
 
 import User from "./User";
 
@@ -14,5 +20,6 @@ export default class Counter {
   public name: string;
 
   @OneToOne(() => User, user => user.counter)
+  @JoinColumn()
   public user: User;
 }

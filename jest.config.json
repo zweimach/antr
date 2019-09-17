@@ -1,8 +1,4 @@
 {
-  "collectCoverageFrom": [
-    "<rootDir>/packages/**/*.{js,jsx,ts,tsx}",
-    "!<rootDir>/packages/**/*.d.ts"
-  ],
   "projects": [
     {
       "displayName": "client",
@@ -32,6 +28,10 @@
       "transformIgnorePatterns": [
         "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
         "^.+\\.css$"
+      ],
+      "collectCoverageFrom": [
+        "<rootDir>/packages/client/**/*.{js,jsx,ts,tsx}",
+        "!<rootDir>/packages/client/**/*.d.ts"
       ]
     },
     {
@@ -46,7 +46,11 @@
         "node_modules",
         "<rootDir>/packages/server/node_modules"
       ],
-      "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|ts)$"]
+      "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|ts)$"],
+      "collectCoverageFrom": [
+        "<rootDir>/packages/server/**/*.{js,ts}",
+        "!<rootDir>/packages/server/**/*.d.ts"
+      ]
     }
   ]
 }

@@ -51,7 +51,7 @@ describe("UserResolver", () => {
   });
 
   it("retrieves entities", async () => {
-    const targetUser = await userResolver.getUser("john");
+    const targetUser = await userResolver.getUser(1234);
     const expected = new User({
       id: 1234,
       fullname: "John",

@@ -37,8 +37,8 @@ export default class CounterResolver {
     return deletedCounter;
   }
 
-  public async getCounter(name: Counter["name"]) {
-    return await this.repository.findOne({ name });
+  public async getCounter(id: Counter["id"]) {
+    return await this.repository.findOne({ id });
   }
 
   public async getAllCounters() {

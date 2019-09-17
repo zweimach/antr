@@ -42,8 +42,8 @@ export default class QueueResolver {
     return deletedQueue;
   }
 
-  public async getQueue(number: Queue["number"]) {
-    return await this.repository.findOne({ number });
+  public async getQueue(id: Queue["id"]) {
+    return await this.repository.findOne({ id });
   }
 
   public async getAllQueues() {

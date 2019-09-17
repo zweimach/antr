@@ -37,8 +37,8 @@ export default class UserResolver {
     return deletedUser;
   }
 
-  public async getUser(username: User["username"]) {
-    return await this.repository.findOne({ username });
+  public async getUser(id: User["id"]) {
+    return await this.repository.findOne({ id });
   }
 
   public async getAllUsers() {

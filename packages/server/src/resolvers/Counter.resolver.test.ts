@@ -39,7 +39,7 @@ describe("CounterResolver", () => {
   });
 
   it("retrieves entities", async () => {
-    const targetCounter = await counterResolver.getCounter("Counter 1234");
+    const targetCounter = await counterResolver.getCounter(1234);
     const expected = new Counter({ id: 1234, name: "Counter 1234" });
 
     expect(targetCounter).not.toBeUndefined();

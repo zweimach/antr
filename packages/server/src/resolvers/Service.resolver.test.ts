@@ -48,7 +48,7 @@ describe("ServiceResolver", () => {
   });
 
   it("retrieves entities", async () => {
-    const targetService = await serviceResolver.getService("Service A");
+    const targetService = await serviceResolver.getService(1234);
     const expected = new Service({
       id: 1234,
       name: "Service A",

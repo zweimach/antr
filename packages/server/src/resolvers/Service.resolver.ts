@@ -37,8 +37,8 @@ export default class ServiceResolver {
     return deletedService;
   }
 
-  public async getService(name: Service["name"]) {
-    return await this.repository.findOne({ name });
+  public async getService(id: Service["id"]) {
+    return await this.repository.findOne({ id });
   }
 
   public async getAllServices() {

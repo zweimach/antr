@@ -5,28 +5,28 @@ import Counter from "./Counter";
 @Entity({ name: "User" })
 export default class User {
   @PrimaryGeneratedColumn({ type: "int" })
-  public id: number;
+  public id!: number;
 
   @Column({
     length: 50,
     type: "varchar",
     unique: true
   })
-  public username: string;
+  public username!: string;
 
   @Column({
     type: "text"
   })
-  public password: string;
+  public password!: string;
 
   @Column({
     length: 100,
     type: "varchar"
   })
-  public fullname: string;
+  public fullname!: string;
 
   @OneToOne(() => Counter, counter => counter.user)
-  public counter: Counter;
+  public counter!: Counter;
 
   public constructor(columns?: Partial<User>) {
     if (columns) {

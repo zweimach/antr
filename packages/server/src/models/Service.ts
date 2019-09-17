@@ -5,23 +5,23 @@ import Queue from "./Queue";
 @Entity({ name: "Service" })
 export default class Service {
   @PrimaryGeneratedColumn({ type: "int" })
-  public id: number;
+  public id!: number;
 
   @Column({
     length: 1,
     type: "varchar",
     unique: true
   })
-  public type: string;
+  public type!: string;
 
   @Column({
     length: 50,
     type: "varchar"
   })
-  public name: string;
+  public name!: string;
 
   @OneToMany(() => Queue, queue => queue.service)
-  public queues: Queue[];
+  public queues!: Queue[];
 
   public constructor(columns?: Partial<Service>) {
     if (columns) {

@@ -9,10 +9,6 @@ export default class CounterResolver {
     this.repository = repository;
   }
 
-  public async getCounterByUserId(id: Counter["user"]["id"]) {
-    return await this.repository.findOne({ where: { user: { id } } });
-  }
-
   public async addCounter(counter: Partial<Counter>) {
     const newCounter = this.repository.create(counter);
     return await this.repository.save(newCounter);
@@ -25,6 +21,9 @@ export default class CounterResolver {
     const updatedCounter = await this.repository.findOne({ id });
     if (updatedCounter) {
       await this.repository.update(id, { name, user });
+    }
+    if (user) {
+      return await this.repository.findOne(id, { relations: ["user"] });
     }
     return await this.repository.findOne(id);
   }

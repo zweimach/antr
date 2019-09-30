@@ -10,10 +10,6 @@ export default class QueueResolver {
     this.repository = repository;
   }
 
-  public async getQueuesByServiceId(id: Queue["service"]["id"]) {
-    return await this.repository.find({ where: { service: { id } } });
-  }
-
   public async addQueue(queue: Partial<Queue>) {
     const newQueue = this.repository.create(queue);
     return await this.repository.save(newQueue);
@@ -30,6 +26,9 @@ export default class QueueResolver {
         isDone,
         service
       });
+    }
+    if (service) {
+      return await this.repository.findOne({ id }, { relations: ["service"] });
     }
     return await this.repository.findOne({ id });
   }

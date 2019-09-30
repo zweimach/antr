@@ -1,16 +1,12 @@
 import { Repository } from "typeorm";
 
-import { User, Counter } from "../models";
+import { User } from "../models";
 
 export default class UserResolver {
   private readonly repository: Repository<User>;
 
   public constructor(repository: Repository<User>) {
     this.repository = repository;
-  }
-
-  public async getUserByCounterId(id: Counter["id"]) {
-    return await this.repository.findOne({ where: { counter: { id } } });
   }
 
   public async addUser(user: Partial<User>) {

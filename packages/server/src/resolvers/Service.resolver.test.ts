@@ -6,6 +6,7 @@ import ServiceResolver from "./Service.resolver";
 describe("ServiceResolver", () => {
   let connection: Connection;
   let serviceRepository: Repository<Service>;
+  let queueRepository: Repository<Queue>;
   let serviceResolver: ServiceResolver;
 
   beforeAll(async () => {
@@ -18,6 +19,7 @@ describe("ServiceResolver", () => {
     });
 
     serviceRepository = connection.getRepository(Service);
+    queueRepository = connection.getRepository(Queue);
 
     serviceResolver = new ServiceResolver(serviceRepository);
   });
@@ -30,6 +32,12 @@ describe("ServiceResolver", () => {
         type: "A"
       })
     );
+    await queueRepository.save(new Queue({ id: 0, isDone: false, number: 12 }));
+  });
+
+  afterEach(async () => {
+    await queueRepository.clear();
+    await serviceRepository.clear();
   });
 
   it("inserts entities", async () => {
@@ -45,6 +53,30 @@ describe("ServiceResolver", () => {
     });
 
     expect(newService).toStrictEqual(expected);
+  });
+
+  it("inserts entities with relations", async () => {
+    const newQueue = new Queue({
+      number: 1234,
+      isDone: true,
+      id: 1
+    });
+    queueRepository.save(newQueue);
+
+    const targetService = await serviceResolver.addService({
+      id: 0,
+      name: "Cleaning",
+      type: "C",
+      queues: [newQueue]
+    });
+    const expected = new Service({
+      id: 0,
+      name: "Cleaning",
+      type: "C",
+      queues: [newQueue]
+    });
+
+    expect(targetService).toStrictEqual(expected);
   });
 
   it("retrieves entities", async () => {
@@ -68,6 +100,29 @@ describe("ServiceResolver", () => {
       id: 1234,
       name: "Service A",
       type: "B"
+    });
+
+    expect(targetService).toStrictEqual(expected);
+  });
+
+  it("updates entities with relations", async () => {
+    const newQueue = new Queue({
+      number: 1234,
+      isDone: true,
+      id: 1
+    });
+    queueRepository.save(newQueue);
+
+    const targetService = await serviceResolver.updateService(1234, {
+      name: "Cleaning",
+      type: "A",
+      queues: [newQueue]
+    });
+    const expected = new Service({
+      id: 1234,
+      name: "Cleaning",
+      type: "A",
+      queues: [newQueue]
     });
 
     expect(targetService).toStrictEqual(expected);

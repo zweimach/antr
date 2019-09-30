@@ -6,6 +6,7 @@ import CounterResolver from "./Counter.resolver";
 describe("CounterResolver", () => {
   let connection: Connection;
   let counterRepository: Repository<Counter>;
+  let userRepository: Repository<User>;
   let counterResolver: CounterResolver;
 
   beforeAll(async () => {
@@ -18,14 +19,25 @@ describe("CounterResolver", () => {
     });
 
     counterRepository = connection.getRepository(Counter);
+    userRepository = connection.getRepository(User);
 
     counterResolver = new CounterResolver(counterRepository);
   });
 
   beforeEach(async () => {
-    await counterRepository.save(
-      counterRepository.create({ id: 1234, name: "Counter 1234" })
-    );
+    const user = new User({
+      fullname: "Dan Abramov",
+      username: "gaearon",
+      password: "reactjs"
+    });
+    await userRepository.save(user);
+    const counter = new Counter({ id: 1234, name: "Counter 1234", user });
+    await counterRepository.save(counter);
+  });
+
+  afterEach(async () => {
+    await counterRepository.clear();
+    await userRepository.clear();
   });
 
   it("inserts entities", async () => {
@@ -34,6 +46,25 @@ describe("CounterResolver", () => {
       name: "Counter 0"
     });
     const expected = new Counter({ id: 0, name: "Counter 0" });
+
+    expect(newCounter).toStrictEqual(expected);
+  });
+
+  it("inserts entities with relations", async () => {
+    const newUser = new User({
+      id: 0,
+      fullname: "John Doe",
+      username: "jdo",
+      password: "1234"
+    });
+    await userRepository.save(newUser);
+
+    const newCounter = await counterResolver.addCounter({
+      id: 0,
+      name: "Counter 0",
+      user: newUser
+    });
+    const expected = new Counter({ id: 0, name: "Counter 0", user: newUser });
 
     expect(newCounter).toStrictEqual(expected);
   });
@@ -51,6 +82,27 @@ describe("CounterResolver", () => {
       name: "Counter 2"
     });
     const expected = new Counter({ id: 1234, name: "Counter 2" });
+
+    expect(targetCounter).toStrictEqual(expected);
+  });
+
+  it("updates entities with relations", async () => {
+    const newUser = new User({
+      fullname: "John Doe",
+      username: "jdo",
+      password: "1234"
+    });
+    await userRepository.save(newUser);
+
+    const targetCounter = await counterResolver.updateCounter(1234, {
+      name: "Counter 2",
+      user: newUser
+    });
+    const expected = new Counter({
+      id: 1234,
+      name: "Counter 2",
+      user: newUser
+    });
 
     expect(targetCounter).toStrictEqual(expected);
   });

@@ -6,6 +6,7 @@ import QueueResolver from "./Queue.resolver";
 describe("QueueResolver", () => {
   let connection: Connection;
   let queueRepository: Repository<Queue>;
+  let serviceRepository: Repository<Service>;
   let queueResolver: QueueResolver;
   let timestamp: Date;
 
@@ -19,6 +20,7 @@ describe("QueueResolver", () => {
     });
 
     queueRepository = connection.getRepository(Queue);
+    serviceRepository = connection.getRepository(Service);
 
     queueResolver = new QueueResolver(queueRepository);
   });
@@ -34,6 +36,11 @@ describe("QueueResolver", () => {
     timestamp = (await queueRepository.findOneOrFail(1234)).timestamp;
   });
 
+  afterEach(async () => {
+    await queueRepository.clear();
+    await serviceRepository.clear();
+  });
+
   it("inserts entities", async () => {
     const newQueue = await queueResolver.addQueue({
       id: 0,
@@ -45,6 +52,31 @@ describe("QueueResolver", () => {
       number: 0,
       isDone: false,
       timestamp
+    });
+
+    expect(newQueue).toStrictEqual(expected);
+  });
+
+  it("inserts entities with relations", async () => {
+    const newService = new Service({
+      id: 7,
+      name: "Cleaning",
+      type: "A"
+    });
+    await serviceRepository.save(newService);
+
+    const newQueue = await queueResolver.addQueue({
+      id: 0,
+      number: 0,
+      isDone: false,
+      service: newService
+    });
+    const expected = new Queue({
+      id: 0,
+      number: 0,
+      isDone: false,
+      timestamp,
+      service: newService
     });
 
     expect(newQueue).toStrictEqual(expected);
@@ -73,6 +105,30 @@ describe("QueueResolver", () => {
       number: 1234,
       isDone: true,
       timestamp
+    });
+
+    expect(targetQueue).toStrictEqual(expected);
+  });
+
+  it("updates entities with relations", async () => {
+    const newService = new Service({
+      id: 7,
+      name: "Cleaning",
+      type: "A"
+    });
+    await serviceRepository.save(newService);
+
+    const targetQueue = await queueResolver.updateQueue(1234, {
+      number: 1234,
+      isDone: true,
+      service: newService
+    });
+    const expected = new Queue({
+      id: 1234,
+      number: 1234,
+      isDone: true,
+      timestamp,
+      service: newService
     });
 
     expect(targetQueue).toStrictEqual(expected);

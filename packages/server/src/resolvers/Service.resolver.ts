@@ -1,16 +1,12 @@
 import { Repository } from "typeorm";
 
-import { Service, Queue } from "../models";
+import { Service } from "../models";
 
 export default class ServiceResolver {
   private readonly repository: Repository<Service>;
 
   public constructor(repository: Repository<Service>) {
     this.repository = repository;
-  }
-
-  public async getServiceByQueueId(id: Queue["id"]) {
-    return await this.repository.findOne({ where: { queues: { id } } });
   }
 
   public async addService(service: Partial<Service>) {
@@ -20,11 +16,15 @@ export default class ServiceResolver {
 
   public async updateService(
     id: Service["id"],
-    { name, type }: Partial<Service>
+    { name, type, queues }: Partial<Service>
   ) {
     const updatedService = await this.repository.findOne({ id });
     if (updatedService) {
       await this.repository.update(id, { name, type });
+    }
+    if (queues !== undefined) {
+      await this.repository.save({ id, queues });
+      return await this.repository.findOne({ relations: ["queues"] });
     }
     return await this.repository.findOne(id);
   }

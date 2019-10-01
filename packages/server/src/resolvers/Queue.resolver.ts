@@ -1,5 +1,4 @@
-import { Between, Repository } from "typeorm";
-import { startOfToday, endOfToday } from "date-fns";
+import { Repository } from "typeorm";
 
 import { Queue } from "../models";
 
@@ -47,24 +46,5 @@ export default class QueueResolver {
 
   public async getAllQueues() {
     return await this.repository.find();
-  }
-
-  public async countAllQueuesToday() {
-    return await this.repository.count({
-      where: {
-        timestamp: Between(startOfToday, endOfToday)
-      }
-    });
-  }
-
-  public async getAllQueuesToday() {
-    return await this.repository.find({
-      where: {
-        timestamp: Between(startOfToday, endOfToday)
-      },
-      order: {
-        id: "DESC"
-      }
-    });
   }
 }

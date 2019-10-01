@@ -5,7 +5,8 @@ import {
   counterRoutes,
   queueRoutes,
   serviceRoutes,
-  userRoutes
+  userRoutes,
+  setupRoutes
 } from "./routes";
 
 export default class Server {
@@ -19,6 +20,7 @@ export default class Server {
 
   public async start(port = 4000) {
     await startDatabase();
+    setupRoutes();
 
     if (this.middleware.length > 0) {
       this.server.use(this.middleware);

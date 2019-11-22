@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router5";
 
 import "./index.css";
 import App from "./App";
-import router from "./shared/router";
+import router from "./router";
 
 ReactDOM.render(
   <RouterProvider router={router}>

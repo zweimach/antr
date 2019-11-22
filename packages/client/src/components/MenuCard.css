@@ -1,4 +1,4 @@
-@import "../../shared/styles/variables.css";
+@import "../styles/variables.css";
 
 .card-platform {
   background-color: transparent;
@@ -21,7 +21,7 @@
   width: 100%;
   height: 40%;
   background-color: var(--primary-color);
-  background-image: url(../../assets/images/amnestyLogo.png);
+  background-image: url(../assets/images/amnestyLogo.png);
   background-size: 8rem;
   background-repeat: no-repeat;
   background-position: right top;

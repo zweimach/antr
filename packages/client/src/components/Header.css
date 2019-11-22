@@ -1,4 +1,4 @@
-@import "../../shared/styles/variables.css";
+@import "../styles/variables.css";
 
 .app-header {
   background-color: var(--primary-color);

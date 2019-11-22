@@ -3,8 +3,8 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale";
 
 import styles from "./Header.css";
-import djpLogo from "../../assets/images/djpLogo.png";
-import useInterval from "../../shared/hooks/useInterval";
+import djpLogo from "../assets/images/djpLogo.png";
+import useInterval from "../hooks/useInterval";
 
 function Header() {
   const [time, setTime] = useState<string>(

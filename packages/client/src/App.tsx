@@ -2,11 +2,13 @@ import React from "react";
 import { State } from "router5/types";
 import { useRoute } from "react-router5";
 
-import HelpCenter from "../HelpCenter";
-import Layout from "../Layout";
-import NotFound from "../NotFound";
-import WaitList from "../WaitList";
-import Dashboard from "../Dashboard";
+import {
+  Layout,
+  Dashboard,
+  HelpCenter,
+  WaitList,
+  NotFound
+} from "./components";
 
 function App() {
   const { route } = useRoute();

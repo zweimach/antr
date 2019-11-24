@@ -5,17 +5,17 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin-alt";
 import path from "path";
 
 import { babelLoader, eslintLoader } from "./loaderConfig";
-import { buildDir, packagesDir } from "../../utils/getDirPath";
+import { buildDir, packagesDir } from "../getDirPath";
 
 export default function createConfig(isDevelopment: boolean): Configuration {
   return {
     mode: isDevelopment ? "development" : "production",
     target: "node",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: `${packagesDir}/server/src/index.ts`,
+    entry: path.join(packagesDir, "src", "index.ts"),
     externals: [
       nodeExternals({
-        modulesDir: path.join(packagesDir, "server", "node_modules")
+        modulesDir: path.join(packagesDir, "node_modules")
       })
     ],
     module: {

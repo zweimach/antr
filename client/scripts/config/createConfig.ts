@@ -12,12 +12,12 @@ import {
   fileLoader,
   postcssLoader
 } from "./loaderConfig";
-import { packagesDir, buildDir } from "../../utils/getDirPath";
+import { packagesDir, buildDir } from "./getDirPath";
 
 function getPlugins(isDevelopment: boolean): Plugin[] {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: path.join(packagesDir, "client", "public", "index.html"),
+      template: path.join(packagesDir, "public", "index.html"),
       filename: "index.html"
     }),
     new FriendlyErrorsWebpackPlugin(),
@@ -37,7 +37,7 @@ export default function createConfig(isDevelopment: boolean): Configuration {
     mode: isDevelopment ? "development" : "production",
     target: "web",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: path.join(packagesDir, "client", "src", "index.tsx"),
+    entry: path.join(packagesDir, "src", "index.tsx"),
     module: {
       rules: [eslintLoader, babelLoader, postcssLoader, fileLoader]
     },

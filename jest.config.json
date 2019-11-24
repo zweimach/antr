@@ -12,13 +12,10 @@
       },
       "testEnvironment": "jsdom",
       "testMatch": [
-        "<rootDir>/packages/client/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-        "<rootDir>/packages/client/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+        "<rootDir>/client/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+        "<rootDir>/client/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
       ],
-      "moduleDirectories": [
-        "node_modules",
-        "<rootDir>/packages/client/node_modules"
-      ],
+      "moduleDirectories": ["node_modules", "<rootDir>/client/node_modules"],
       "moduleNameMapper": {
         "^.+\\.css$": "identity-obj-proxy"
       },
@@ -30,8 +27,8 @@
         "^.+\\.css$"
       ],
       "collectCoverageFrom": [
-        "<rootDir>/packages/client/**/*.{js,jsx,ts,tsx}",
-        "!<rootDir>/packages/client/**/*.d.ts"
+        "<rootDir>/client/**/*.{js,jsx,ts,tsx}",
+        "!<rootDir>/client/**/*.d.ts"
       ]
     },
     {
@@ -39,17 +36,14 @@
       "preset": "ts-jest",
       "testEnvironment": "node",
       "testMatch": [
-        "<rootDir>/packages/server/src/**/__tests__/**/*.{js,ts}",
-        "<rootDir>/packages/server/src/**/?(*.)(spec|test).{js,ts}"
+        "<rootDir>/server/src/**/__tests__/**/*.{js,ts}",
+        "<rootDir>/server/src/**/?(*.)(spec|test).{js,ts}"
       ],
-      "moduleDirectories": [
-        "node_modules",
-        "<rootDir>/packages/server/node_modules"
-      ],
+      "moduleDirectories": ["node_modules", "<rootDir>/server/node_modules"],
       "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|ts)$"],
       "collectCoverageFrom": [
-        "<rootDir>/packages/server/**/*.{js,ts}",
-        "!<rootDir>/packages/server/**/*.d.ts"
+        "<rootDir>/server/**/*.{js,ts}",
+        "!<rootDir>/server/**/*.d.ts"
       ]
     }
   ]

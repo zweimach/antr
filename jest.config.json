@@ -7,7 +7,8 @@
         "ts-jest": {
           "tsConfig": {
             "jsx": "react"
-          }
+          },
+          "packageJson": "package.json"
         }
       },
       "testEnvironment": "jsdom",
@@ -34,6 +35,11 @@
     {
       "displayName": "server",
       "preset": "ts-jest",
+      "globals": {
+        "ts-jest": {
+          "packageJson": "package.json"
+        }
+      },
       "testEnvironment": "node",
       "testMatch": [
         "<rootDir>/server/src/**/__tests__/**/*.{js,ts}",

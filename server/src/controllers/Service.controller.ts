@@ -75,6 +75,7 @@ export default class ServiceController {
       };
 
       if (Array.isArray(queues)) {
+        // eslint-disable-next-line
         queues.forEach(await getQueryInfo);
       }
       await getQueryInfo(queues);
@@ -118,6 +119,7 @@ export default class ServiceController {
       };
 
       if (Array.isArray(queues)) {
+        // eslint-disable-next-line
         queues.forEach(await getQueryInfo);
       }
       await getQueryInfo(queues);

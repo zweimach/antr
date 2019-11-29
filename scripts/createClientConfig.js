@@ -10,12 +10,12 @@ import {
   fileLoader,
   postcssLoader,
 } from "./loaderConfig";
-import { clientDir, buildDir } from "./getDirPath";
+import { clientDirectory, buildDirectory } from "./getDirectoryPath";
 
 function getPlugins(isDevelopment) {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: path.join(clientDir, "public", "index.html"),
+      template: path.join(clientDirectory, "public", "index.html"),
       filename: "index.html",
       minify: !isDevelopment,
     }),
@@ -35,7 +35,10 @@ export default function createConfig(isDevelopment) {
     mode: isDevelopment ? "development" : "production",
     target: "web",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: ["react-hot-loader/patch", path.join(clientDir, "src", "index.js")],
+    entry: [
+      "react-hot-loader/patch",
+      path.join(clientDirectory, "src", "index.js"),
+    ],
     module: {
       rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
     },
@@ -47,7 +50,7 @@ export default function createConfig(isDevelopment) {
     },
     output: {
       filename: isDevelopment ? "[name].[hash].js" : "[name].[contenthash].js",
-      path: path.join(buildDir, "client"),
+      path: path.join(buildDirectory, "client"),
     },
     watch: isDevelopment,
     optimization: {

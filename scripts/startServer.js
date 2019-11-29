@@ -6,7 +6,7 @@ import Server from "../server/src/Server";
 
 const compiler = webpack(createConfig(true));
 
-const devServer = new Server(
+const developmentServer = new Server(
   webpackDevMiddleware(compiler, {
     logLevel: "silent",
     publicPath: "",
@@ -16,4 +16,4 @@ const devServer = new Server(
   })
 );
 
-devServer.start();
+developmentServer.start();

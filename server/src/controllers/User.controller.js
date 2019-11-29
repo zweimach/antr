@@ -7,8 +7,8 @@ export default class UserController {
     UserController.userResolver = userResolver;
   }
 
-  static async getAllUsers(req, res) {
-    return res
+  static async getAllUsers(request, response) {
+    return response
       .status(ApiStatus.Ok)
       .json(
         withResponse(
@@ -18,22 +18,22 @@ export default class UserController {
       );
   }
 
-  static async getUser(req, res) {
+  static async getUser(request, response) {
     const user = await UserController.userResolver.getUser(
-      parseInt(req.params.id)
+      parseInt(request.params.id)
     );
 
     if (!user) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, user));
+    return response.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, user));
   }
 
-  static async addUser(req, res) {
-    const { id, fullname, username, password } = req.body;
+  static async addUser(request, response) {
+    const { id, fullname, username, password } = request.body;
 
     if (
       id === undefined ||
@@ -41,11 +41,11 @@ export default class UserController {
       username === undefined ||
       password === undefined
     ) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -57,11 +57,13 @@ export default class UserController {
       password,
     });
 
-    return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, newUser));
+    return response
+      .status(ApiStatus.Ok)
+      .json(withResponse(ApiStatus.Ok, newUser));
   }
 
-  static async updateUser(req, res) {
-    const { id, fullname, username, password } = req.body;
+  static async updateUser(request, response) {
+    const { id, fullname, username, password } = request.body;
 
     if (
       id === undefined ||
@@ -69,11 +71,11 @@ export default class UserController {
       username === undefined ||
       password === undefined
     ) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -84,25 +86,25 @@ export default class UserController {
     );
 
     if (!updatedUser) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, updatedUser));
   }
 
-  static async deleteUser(req, res) {
-    const { id } = req.params;
+  static async deleteUser(request, response) {
+    const { id } = request.params;
 
     if (!id) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -112,12 +114,12 @@ export default class UserController {
     );
 
     if (!deletedUser) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, deletedUser));
   }

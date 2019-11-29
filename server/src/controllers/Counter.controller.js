@@ -7,8 +7,8 @@ export default class CounterController {
     CounterController.userResolver = userResolver;
   }
 
-  static async getAllCounters(req, res) {
-    return res
+  static async getAllCounters(request, response) {
+    return response
       .status(ApiStatus.Ok)
       .json(
         withResponse(
@@ -18,29 +18,31 @@ export default class CounterController {
       );
   }
 
-  static async getCounter(req, res) {
+  static async getCounter(request, response) {
     const counter = await CounterController.counterResolver.getCounter(
-      parseInt(req.params.id)
+      parseInt(request.params.id)
     );
 
     if (!counter) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, counter));
+    return response
+      .status(ApiStatus.Ok)
+      .json(withResponse(ApiStatus.Ok, counter));
   }
 
-  static async addCounter(req, res) {
-    const { id, name, user } = req.body;
+  static async addCounter(request, response) {
+    const { id, name, user } = request.body;
 
     if (id === undefined || name === undefined) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -61,20 +63,20 @@ export default class CounterController {
       counterInfo
     );
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, newCounter));
   }
 
-  static async updateCounter(req, res) {
-    const { id, name, user } = req.body;
+  static async updateCounter(request, response) {
+    const { id, name, user } = request.body;
 
     if (id === undefined || name === undefined) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -97,25 +99,25 @@ export default class CounterController {
     );
 
     if (!updatedCounter) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, updatedCounter));
   }
 
-  static async deleteCounter(req, res) {
-    const { id } = req.params;
+  static async deleteCounter(request, response) {
+    const { id } = request.params;
 
     if (!id) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -125,12 +127,12 @@ export default class CounterController {
     );
 
     if (!deletedUser) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, deletedUser));
   }

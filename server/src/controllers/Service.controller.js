@@ -10,8 +10,8 @@ export default class ServiceController {
     ServiceController.queueResolver = queueResolver;
   }
 
-  static async getAllServices(req, res) {
-    return res
+  static async getAllServices(request, response) {
+    return response
       .status(ApiStatus.Ok)
       .json(
         withResponse(
@@ -21,29 +21,31 @@ export default class ServiceController {
       );
   }
 
-  static async getService(req, res) {
+  static async getService(request, response) {
     const service = await ServiceController.serviceResolver.getService(
-      parseInt(req.params.id)
+      parseInt(request.params.id)
     );
 
     if (!service) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, service));
+    return response
+      .status(ApiStatus.Ok)
+      .json(withResponse(ApiStatus.Ok, service));
   }
 
-  static async addService(req, res) {
-    const { id, name, type, queues } = req.body;
+  static async addService(request, response) {
+    const { id, name, type, queues } = request.body;
 
     if (id === undefined || name === undefined || type === undefined) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -66,7 +68,6 @@ export default class ServiceController {
       };
 
       if (Array.isArray(queues)) {
-        // eslint-disable-next-line
         queues.forEach(await getQueryInfo);
       }
       await getQueryInfo(queues);
@@ -76,20 +77,20 @@ export default class ServiceController {
       serviceInfo
     );
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, newService));
   }
 
-  static async updateService(req, res) {
-    const { id, name, type, queues } = req.body;
+  static async updateService(request, response) {
+    const { id, name, type, queues } = request.body;
 
     if (id === undefined || name === undefined || type === undefined) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -107,7 +108,6 @@ export default class ServiceController {
       };
 
       if (Array.isArray(queues)) {
-        // eslint-disable-next-line
         queues.forEach(await getQueryInfo);
       }
       await getQueryInfo(queues);
@@ -120,30 +120,30 @@ export default class ServiceController {
       );
 
       if (!updatedService) {
-        return res
+        return response
           .status(ApiStatus.NotFound)
           .json(withResponse(ApiStatus.NotFound));
       }
 
-      return res
+      return response
         .status(ApiStatus.Ok)
         .json(withResponse(ApiStatus.Ok, updatedService));
     } catch {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
   }
 
-  static async deleteService(req, res) {
-    const { id } = req.params;
+  static async deleteService(request, response) {
+    const { id } = request.params;
 
     if (!id) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -153,12 +153,12 @@ export default class ServiceController {
     );
 
     if (!deletedQueue) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, deletedQueue));
   }

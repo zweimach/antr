@@ -7,13 +7,13 @@ export default function useInterval(callback, delay) {
     savedCallback.current = callback;
   }, [callback]);
 
-  useEffect(() => {
-    function tick() {
-      if (savedCallback.current) {
-        savedCallback.current();
-      }
+  function tick() {
+    if (savedCallback.current) {
+      savedCallback.current();
     }
+  }
 
+  useEffect(() => {
     if (delay !== null) {
       const id = setInterval(tick, delay);
       return () => {

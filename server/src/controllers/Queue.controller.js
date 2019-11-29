@@ -10,8 +10,8 @@ export default class QueueController {
     QueueController.serviceResolver = serviceResolver;
   }
 
-  static async getAllQueues(req, res) {
-    return res
+  static async getAllQueues(request, response) {
+    return response
       .status(ApiStatus.Ok)
       .json(
         withResponse(
@@ -21,25 +21,27 @@ export default class QueueController {
       );
   }
 
-  static async getQueue(req, res) {
+  static async getQueue(request, response) {
     const queue = await QueueController.queueResolver.getQueue(
-      parseInt(req.params.id)
+      parseInt(request.params.id)
     );
 
     if (!queue) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, queue));
+    return response
+      .status(ApiStatus.Ok)
+      .json(withResponse(ApiStatus.Ok, queue));
   }
 
-  static async addQueue(req, res) {
-    const { id, isDone, number, service } = req.body;
+  static async addQueue(request, response) {
+    const { id, isDone, number, service } = request.body;
 
     if (id === undefined || number === undefined || isDone === undefined) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (
@@ -47,7 +49,7 @@ export default class QueueController {
       isNaN(parseInt(number)) ||
       typeof Boolean(isDone) !== "boolean"
     ) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -70,14 +72,16 @@ export default class QueueController {
 
     const newQueue = await QueueController.queueResolver.addQueue(queueInfo);
 
-    return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, newQueue));
+    return response
+      .status(ApiStatus.Ok)
+      .json(withResponse(ApiStatus.Ok, newQueue));
   }
 
-  static async updateQueue(req, res) {
-    const { id, isDone, number, service } = req.body;
+  static async updateQueue(request, response) {
+    const { id, isDone, number, service } = request.body;
 
     if (id === undefined || number === undefined || isDone === undefined) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (
@@ -85,7 +89,7 @@ export default class QueueController {
       isNaN(parseInt(number)) ||
       typeof Boolean(isDone) !== "boolean"
     ) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -112,25 +116,25 @@ export default class QueueController {
     );
 
     if (!updatedQueue) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, updatedQueue));
   }
 
-  static async deleteQueue(req, res) {
-    const { id } = req.params;
+  static async deleteQueue(request, response) {
+    const { id } = request.params;
 
     if (!id) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     } else if (isNaN(parseInt(id))) {
-      return res
+      return response
         .status(ApiStatus.BadRequest)
         .json(withResponse(ApiStatus.BadRequest));
     }
@@ -140,12 +144,12 @@ export default class QueueController {
     );
 
     if (!deletedService) {
-      return res
+      return response
         .status(ApiStatus.NotFound)
         .json(withResponse(ApiStatus.NotFound));
     }
 
-    return res
+    return response
       .status(ApiStatus.Ok)
       .json(withResponse(ApiStatus.Ok, deletedService));
   }

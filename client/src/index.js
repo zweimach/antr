@@ -10,5 +10,5 @@ ReactDOM.render(
   <RouterProvider router={router}>
     <App />
   </RouterProvider>,
-  document.getElementById("root")
+  document.querySelector("#root")
 );

@@ -10,12 +10,12 @@ import {
   fileLoader,
   postcssLoader,
 } from "./loaderConfig";
-import { packagesDir, buildDir } from "./getDirPath";
+import { clientDir, buildDir } from "./getDirPath";
 
 function getPlugins(isDevelopment) {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: path.join(packagesDir, "public", "index.html"),
+      template: path.join(clientDir, "public", "index.html"),
       filename: "index.html",
       minify: !isDevelopment,
     }),
@@ -35,10 +35,7 @@ export default function createConfig(isDevelopment) {
     mode: isDevelopment ? "development" : "production",
     target: "web",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: [
-      "react-hot-loader/patch",
-      path.join(packagesDir, "src", "index.js"),
-    ],
+    entry: ["react-hot-loader/patch", path.join(clientDir, "src", "index.js")],
     module: {
       rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
     },

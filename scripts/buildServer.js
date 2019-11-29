@@ -1,6 +1,6 @@
 import webpack from "webpack";
 
-import createConfig from "./config/createConfig";
+import createConfig from "./createServerConfig";
 
 const compiler = webpack(createConfig(false));
 

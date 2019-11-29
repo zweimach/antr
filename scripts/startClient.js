@@ -2,8 +2,8 @@ import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
 import path from "path";
 
-import createConfig from "./config/createConfig";
-import { buildDir } from "./config/getDirPath";
+import createConfig from "./createClientConfig";
+import { buildDir } from "./getDirPath";
 
 const compiler = webpack(createConfig(true));
 

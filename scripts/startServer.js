@@ -1,8 +1,8 @@
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
 
-import createConfig from "./config/createConfig";
-import Server from "../src/Server";
+import createConfig from "./createServerConfig";
+import Server from "../server/src/Server";
 
 const compiler = webpack(createConfig(true));
 

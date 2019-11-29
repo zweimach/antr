@@ -3,17 +3,17 @@ import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import path from "path";
 
 import { babelLoader, eslintLoader } from "./loaderConfig";
-import { buildDir, packagesDir } from "./getDirPath";
+import { buildDir, serverDir } from "./getDirPath";
 
 export default function createConfig(isDevelopment) {
   return {
     mode: isDevelopment ? "development" : "production",
     target: "node",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: path.join(packagesDir, "src", "index.js"),
+    entry: path.join(serverDir, "src", "index.js"),
     externals: [
       nodeExternals({
-        modulesDir: path.join(packagesDir, "node_modules"),
+        modulesDir: path.join(serverDir, "node_modules"),
       }),
     ],
     module: {

@@ -17,6 +17,7 @@ function getPlugins(isDevelopment) {
     new HtmlWebpackPlugin({
       template: path.join(packagesDir, "public", "index.html"),
       filename: "index.html",
+      minify: !isDevelopment,
     }),
     new FriendlyErrorsWebpackPlugin(),
     new DotenvWebpackPlugin(),
@@ -34,18 +35,36 @@ export default function createConfig(isDevelopment) {
     mode: isDevelopment ? "development" : "production",
     target: "web",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: path.join(packagesDir, "src", "index.js"),
+    entry: [
+      "react-hot-loader/patch",
+      path.join(packagesDir, "src", "index.js"),
+    ],
     module: {
       rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
     },
     resolve: {
       extensions: ["*", ".js", ".jsx", ".json"],
+      alias: isDevelopment
+        ? { "react-dom": "@hot-loader/react-dom" }
+        : undefined,
     },
     output: {
-      filename: "bundle.js",
+      filename: isDevelopment ? "[name].[hash].js" : "[name].[contenthash].js",
       path: path.join(buildDir, "client"),
     },
     watch: isDevelopment,
+    optimization: {
+      runtimeChunk: "single",
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all",
+          },
+        },
+      },
+    },
     plugins: getPlugins(isDevelopment),
   };
 }

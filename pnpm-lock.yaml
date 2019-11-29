@@ -9,10 +9,10 @@ importers:
       "@babel/plugin-transform-runtime": 7.7.4_@babel+core@7.7.4
       "@babel/preset-env": 7.7.4_@babel+core@7.7.4
       "@babel/preset-react": 7.7.4_@babel+core@7.7.4
-      "@babel/preset-typescript": 7.7.4_@babel+core@7.7.4
       "@babel/runtime": 7.7.4
       "@commitlint/cli": 8.2.0
       "@commitlint/config-conventional": 8.2.0
+      "@hot-loader/react-dom": 16.11.0_react@16.11.0
       babel-eslint: 10.0.3_eslint@6.7.1
       babel-jest: 24.9.0_@babel+core@7.7.4
       babel-loader: 8.0.6_@babel+core@7.7.4+webpack@4.41.2
@@ -40,6 +40,9 @@ importers:
       postcss-loader: 3.0.0
       postcss-preset-env: 6.7.0
       prettier: 1.19.1
+      react: 16.11.0
+      react-dom: 16.11.0_react@16.11.0
+      react-hot-loader: 4.12.18_react-dom@16.11.0+react@16.11.0
       rxjs: 6.5.3
       sql.js: 1.0.1
       style-loader: 1.0.0_webpack@4.41.2
@@ -62,10 +65,10 @@ importers:
       "@babel/plugin-transform-runtime": 7.7.4
       "@babel/preset-env": 7.7.4
       "@babel/preset-react": 7.7.4
-      "@babel/preset-typescript": 7.7.4
       "@babel/runtime": 7.7.4
       "@commitlint/cli": 8.2.0
       "@commitlint/config-conventional": 8.2.0
+      "@hot-loader/react-dom": 16.11.0
       babel-eslint: 10.0.3
       babel-jest: 24.9.0
       babel-loader: 8.0.6
@@ -93,6 +96,9 @@ importers:
       postcss-loader: 3.0.0
       postcss-preset-env: 6.7.0
       prettier: 1.19.1
+      react: 16.11.0
+      react-dom: 16.11.0
+      react-hot-loader: 4.12.18
       rxjs: 6.5.3
       sql.js: 1.0.1
       style-loader: 1.0.0
@@ -109,25 +115,27 @@ importers:
   client:
     dependencies:
       date-fns: 2.8.1
-      react: 16.12.0
-      react-dom: 16.12.0_react@16.12.0
-      react-redux: 7.1.3_9a2f9d4864311d39d6f2623bd2f887e8
-      react-router5: 7.1.0_react@16.12.0+router5@7.0.2
+      react: 16.11.0
+      react-dom: 16.11.0_react@16.11.0
+      react-redux: 7.1.3_628f6152765602c6f5da96d6b311c46f
+      react-router5: 7.1.0_react@16.11.0+router5@7.0.2
       redux: 4.0.4
       refract-redux-rxjs: 1.4.1_redux@4.0.4+rxjs@6.5.3
-      refract-rxjs: 4.2.3_react@16.12.0+rxjs@6.5.3
+      refract-rxjs: 4.2.3_react@16.11.0+rxjs@6.5.3
       router5: 7.0.2_router5@7.0.2
       router5-plugin-browser: 7.0.2_router5@7.0.2
       rxjs: 6.5.3
     devDependencies:
-      "@testing-library/react": 9.3.2_react-dom@16.12.0+react@16.12.0
+      "@testing-library/react": 9.3.2_react-dom@16.11.0+react@16.11.0
       prop-types: 15.7.2
+      react-hot-loader: 4.12.18_react-dom@16.11.0+react@16.11.0
     specifiers:
       "@testing-library/react": 9.3.2
       date-fns: 2.8.1
       prop-types: 15.7.2
-      react: 16.12.0
-      react-dom: 16.12.0
+      react: 16.11.0
+      react-dom: 16.11.0
+      react-hot-loader: 4.12.18
       react-redux: 7.1.3
       react-router5: 7.1.0
       redux: 4.0.4
@@ -557,15 +565,6 @@ packages:
       "@babel/core": ^7.0.0-0
     resolution:
       integrity: sha512-wdsOw0MvkL1UIgiQ/IFr3ETcfv1xb8RMM0H9wbiDyLaJFyiDg5oZvDLCXosIXmFeIlweML5iOBXAkqddkYNizg==
-  /@babel/plugin-syntax-typescript/7.7.4_@babel+core@7.7.4:
-    dependencies:
-      "@babel/core": 7.7.4
-      "@babel/helper-plugin-utils": 7.0.0
-    dev: true
-    peerDependencies:
-      "@babel/core": ^7.0.0-0
-    resolution:
-      integrity: sha512-77blgY18Hud4NM1ggTA8xVT/dBENQf17OpiToSa2jSmEY3fWXD2jwrdVlO4kq5yzUTeF15WSQ6b4fByNvJcjpQ==
   /@babel/plugin-transform-arrow-functions/7.7.4_@babel+core@7.7.4:
     dependencies:
       "@babel/core": 7.7.4
@@ -914,17 +913,6 @@ packages:
       "@babel/core": ^7.0.0-0
     resolution:
       integrity: sha512-KQPUQ/7mqe2m0B8VecdyaW5XcQYaePyl9R7IsKd+irzj6jvbhoGnRE+M0aNkyAzI07VfUQ9266L5xMARitV3wg==
-  /@babel/plugin-transform-typescript/7.7.4_@babel+core@7.7.4:
-    dependencies:
-      "@babel/core": 7.7.4
-      "@babel/helper-create-class-features-plugin": 7.7.4_@babel+core@7.7.4
-      "@babel/helper-plugin-utils": 7.0.0
-      "@babel/plugin-syntax-typescript": 7.7.4_@babel+core@7.7.4
-    dev: true
-    peerDependencies:
-      "@babel/core": ^7.0.0-0
-    resolution:
-      integrity: sha512-X8e3tcPEKnwwPVG+vP/vSqEShkwODOEeyQGod82qrIuidwIrfnsGn11qPM1jBLF4MqguTXXYzm58d0dY+/wdpg==
   /@babel/plugin-transform-unicode-regex/7.7.4_@babel+core@7.7.4:
     dependencies:
       "@babel/core": 7.7.4
@@ -1007,16 +995,6 @@ packages:
       "@babel/core": ^7.0.0-0
     resolution:
       integrity: sha512-j+vZtg0/8pQr1H8wKoaJyGL2IEk3rG/GIvua7Sec7meXVIvGycihlGMx5xcU00kqCJbwzHs18xTu3YfREOqQ+g==
-  /@babel/preset-typescript/7.7.4_@babel+core@7.7.4:
-    dependencies:
-      "@babel/core": 7.7.4
-      "@babel/helper-plugin-utils": 7.0.0
-      "@babel/plugin-transform-typescript": 7.7.4_@babel+core@7.7.4
-    dev: true
-    peerDependencies:
-      "@babel/core": ^7.0.0-0
-    resolution:
-      integrity: sha512-rqrjxfdiHPsnuPur0jKrIIGQCIgoTWMTjlbWE69G4QJ6TIOVnnRnIJhUxNTL/VwDmEAVX08Tq3B1nirer5341w==
   /@babel/register/7.7.4_@babel+core@7.7.4:
     dependencies:
       "@babel/core": 7.7.4
@@ -1225,6 +1203,18 @@ packages:
       node: ">=4.0.0"
     resolution:
       integrity: sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
+  /@hot-loader/react-dom/16.11.0_react@16.11.0:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+      react: 16.11.0
+      scheduler: 0.17.0
+    dev: true
+    peerDependencies:
+      react: ^16.0.0
+    resolution:
+      integrity: sha512-cIOVB8YgT4EVCNiXK+gGuYl6adW/TKlW3N7GvgY5QgpL2NTWagF/oJxVscHSdR3O7NjJsoxdseB5spqwCHNIhA==
   /@jest/console/24.9.0:
     dependencies:
       "@jest/source-map": 24.9.0
@@ -1455,13 +1445,13 @@ packages:
       node: ">=8"
     resolution:
       integrity: sha512-5BPKxaO+zSJDUbVZBRNf9KrmDkm/EcjjaHSg3F9+031VZyPACKXlwLBjVzZxheunT9m72DoIq7WvyE457/Xweg==
-  /@testing-library/react/9.3.2_react-dom@16.12.0+react@16.12.0:
+  /@testing-library/react/9.3.2_react-dom@16.11.0+react@16.11.0:
     dependencies:
       "@babel/runtime": 7.7.4
       "@testing-library/dom": 6.10.1
       "@types/testing-library__react": 9.1.2
-      react: 16.12.0
-      react-dom: 16.12.0_react@16.12.0
+      react: 16.11.0
+      react-dom: 16.11.0_react@16.11.0
     dev: true
     engines:
       node: ">=8"
@@ -3563,6 +3553,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-2/xPb3ORsQ42nHYiSunXkDjPLBaEj/xTwUO4B7XCZQTRk7EBtTOPaygh10YAAh2OI1Qrp6NWfpAhzswj0ydt9g==
+  /dom-walk/0.1.1:
+    dev: true
+    resolution:
+      integrity: sha1-ZyIm3HTI95mtNTB9+TaroRrNYBg=
   /domain-browser/1.2.0:
     dev: true
     engines:
@@ -4709,6 +4703,13 @@ packages:
       node: ">=6"
     resolution:
       integrity: sha512-awConJSVCHVGND6x3tmMaKcQvwXLhjdkmomy2W+Goaui8YPgYgXJZewhg3fWC+DlfqqQuWg8AwqjGTD2nAPVWg==
+  /global/4.4.0:
+    dependencies:
+      min-document: 2.19.0
+      process: 0.11.10
+    dev: true
+    resolution:
+      integrity: sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w==
   /globals/11.12.0:
     dev: true
     engines:
@@ -4928,7 +4929,6 @@ packages:
   /hoist-non-react-statics/3.3.1:
     dependencies:
       react-is: 16.12.0
-    dev: false
     resolution:
       integrity: sha512-wbg3bpgA/ZqWrZuMOeJi8+SKMhr7X9TesL/rXMjTzh0p0JUBo3II8DHboYbuIXWRlttrUFxwcu/5kygrCw8fJw==
   /homedir-polyfill/1.0.3:
@@ -5933,6 +5933,9 @@ packages:
       node: ">=6"
     peerDependencies:
       jest-resolve: "*"
+    peerDependenciesMeta:
+      jest-resolve:
+        optional: true
     resolution:
       integrity: sha512-pgFw2tm54fzgYvc/OHrnysABEObZCUNFnhjoRjaVOCN8NYc032/gVjPaHD4Aq6ApkSieWtfKAFQtmDKAmhupnQ==
   /jest-regex-util/24.9.0:
@@ -6876,6 +6879,12 @@ packages:
       node: ">=6"
     resolution:
       integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
+  /min-document/2.19.0:
+    dependencies:
+      dom-walk: 0.1.1
+    dev: true
+    resolution:
+      integrity: sha1-e9KC4/WELtKVu3SM3Z8f+iyCRoU=
   /minimalistic-assert/1.0.1:
     dev: true
     resolution:
@@ -8525,29 +8534,54 @@ packages:
       node: ">= 0.8"
     resolution:
       integrity: sha512-4Oz8DUIwdvoa5qMJelxipzi/iJIi40O5cGV1wNYp5hvZP8ZN0T+jiNkL0QepXs+EsQ9XJ8ipEDoiH70ySUJP3Q==
-  /react-dom/16.12.0_react@16.12.0:
+  /react-dom/16.11.0_react@16.11.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.7.2
-      react: 16.12.0
-      scheduler: 0.18.0
+      react: 16.11.0
+      scheduler: 0.17.0
     peerDependencies:
       react: ^16.0.0
     resolution:
-      integrity: sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
+      integrity: sha512-nrRyIUE1e7j8PaXSPtyRKtz+2y9ubW/ghNgqKFHHAHaeP0fpF5uXR+sq8IMRHC+ZUxw7W9NyCDTBtwWxvkb0iA==
+  /react-hot-loader/4.12.18_react-dom@16.11.0+react@16.11.0:
+    dependencies:
+      fast-levenshtein: 2.0.6
+      global: 4.4.0
+      hoist-non-react-statics: 3.3.1
+      loader-utils: 1.2.3
+      prop-types: 15.7.2
+      react: 16.11.0
+      react-dom: 16.11.0_react@16.11.0
+      react-lifecycles-compat: 3.0.4
+      shallowequal: 1.1.0
+      source-map: 0.7.3
+    dev: true
+    engines:
+      node: ">= 6"
+    peerDependencies:
+      "@types/react": ^15.0.0 || ^16.0.0
+      react: ^15.0.0 || ^16.0.0
+      react-dom: ^15.0.0 || ^16.0.0
+    resolution:
+      integrity: sha512-qYD0Qi9lIbg9jLyfmodfqvAQqCBsoPKxAhca8Nxvy2/2pO5Q9r2kM28jN0bbbSnhwK8dJ7FjsfVtXKOxMW+bqw==
   /react-is/16.12.0:
     resolution:
       integrity: sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
-  /react-redux/7.1.3_9a2f9d4864311d39d6f2623bd2f887e8:
+  /react-lifecycles-compat/3.0.4:
+    dev: true
+    resolution:
+      integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  /react-redux/7.1.3_628f6152765602c6f5da96d6b311c46f:
     dependencies:
       "@babel/runtime": 7.7.4
       hoist-non-react-statics: 3.3.1
       invariant: 2.2.4
       loose-envify: 1.4.0
       prop-types: 15.7.2
-      react: 16.12.0
-      react-dom: 16.12.0_react@16.12.0
+      react: 16.11.0
+      react-dom: 16.11.0_react@16.11.0
       react-is: 16.12.0
       redux: 4.0.4
     dev: false
@@ -8563,10 +8597,10 @@ packages:
         optional: true
     resolution:
       integrity: sha512-uI1wca+ECG9RoVkWQFF4jDMqmaw0/qnvaSvOoL/GA4dNxf6LoV8sUAcNDvE5NWKs4hFpn0t6wswNQnY3f7HT3w==
-  /react-router5/7.1.0_react@16.12.0+router5@7.0.2:
+  /react-router5/7.1.0_react@16.11.0+router5@7.0.2:
     dependencies:
       prop-types: 15.6.2
-      react: 16.12.0
+      react: 16.11.0
       router5: 7.0.2_router5@7.0.2
       router5-transition-path: 7.0.1_router5@7.0.2
     dev: false
@@ -8575,7 +8609,7 @@ packages:
       router5: ^7.0.0
     resolution:
       integrity: sha512-OVMaRPOhJP5/1U2ExEz9kpv/cdnpt08bKo/+bUgsimDTJ+eD0NrM4wqa1nkpZFUJaICfHccjuHfcxcA5/N0cDw==
-  /react/16.12.0:
+  /react/16.11.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -8583,7 +8617,7 @@ packages:
     engines:
       node: ">=0.10.0"
     resolution:
-      integrity: sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
+      integrity: sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g==
   /read-pkg-up/3.0.0:
     dependencies:
       find-up: 2.1.0
@@ -8702,9 +8736,9 @@ packages:
       rxjs: ^6.0.0
     resolution:
       integrity: sha512-vSLW5gFCSn7PHn9ZKcka69WY6knKkkpI+hnv4igPmn0j9lFZOfWqxc8M2y1TtE2SW3qjEsceq/lPEfLqth0VuA==
-  /refract-rxjs/4.2.3_react@16.12.0+rxjs@6.5.3:
+  /refract-rxjs/4.2.3_react@16.11.0+rxjs@6.5.3:
     dependencies:
-      react: 16.12.0
+      react: 16.11.0
       rxjs: 6.5.3
     dev: false
     peerDependencies:
@@ -9159,12 +9193,12 @@ packages:
   /sax/1.2.4:
     resolution:
       integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
-  /scheduler/0.18.0:
+  /scheduler/0.17.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
     resolution:
-      integrity: sha512-agTSHR1Nbfi6ulI0kYNK0203joW2Y5W4po4l+v03tOoiJKpTBbxpNhWDvqc/4IcOw+KLmSiQLTasZ4cab2/UWQ==
+      integrity: sha512-7rro8Io3tnCPuY4la/NuI5F2yfESpnfZyT6TtkXnSWVkcu0BCDJ+8gk5ozUaFaxpIyNuWAPXrH0yFcSi28fnDA==
   /schema-utils/1.0.0:
     dependencies:
       ajv: 6.10.2
@@ -9300,6 +9334,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==
+  /shallowequal/1.1.0:
+    dev: true
+    resolution:
+      integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
   /shebang-command/1.2.0:
     dependencies:
       shebang-regex: 1.0.0
@@ -9456,6 +9494,12 @@ packages:
       node: ">=0.10.0"
     resolution:
       integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+  /source-map/0.7.3:
+    dev: true
+    engines:
+      node: ">= 8"
+    resolution:
+      integrity: sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
   /spawn-command/0.0.2-1:
     dev: true
     resolution:

@@ -1,5 +1,6 @@
 import React from "react";
 import { useRoute } from "react-router5";
+import { hot } from "react-hot-loader/root";
 
 import {
   Layout,
@@ -39,4 +40,4 @@ function selectRoute(route) {
   return <Layout>{selected}</Layout>;
 }
 
-export default App;
+export default hot(App);

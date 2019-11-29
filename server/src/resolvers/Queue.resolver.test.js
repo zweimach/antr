@@ -16,7 +16,7 @@ describe("QueueResolver", () => {
       entities: [Queue, Service],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     queueRepository = connection.getRepository(Queue);
@@ -30,7 +30,7 @@ describe("QueueResolver", () => {
       queueRepository.create({
         id: 1234,
         number: 1234,
-        isDone: false
+        isDone: false,
       })
     );
     timestamp = (await queueRepository.findOneOrFail(1234)).timestamp;
@@ -45,13 +45,13 @@ describe("QueueResolver", () => {
     const newQueue = await queueResolver.addQueue({
       id: 0,
       number: 0,
-      isDone: false
+      isDone: false,
     });
     const expected = new Queue({
       id: 0,
       number: 0,
       isDone: false,
-      timestamp
+      timestamp,
     });
 
     expect(newQueue).toStrictEqual(expected);
@@ -61,7 +61,7 @@ describe("QueueResolver", () => {
     const newService = new Service({
       id: 7,
       name: "Cleaning",
-      type: "A"
+      type: "A",
     });
     await serviceRepository.save(newService);
 
@@ -69,14 +69,14 @@ describe("QueueResolver", () => {
       id: 0,
       number: 0,
       isDone: false,
-      service: newService
+      service: newService,
     });
     const expected = new Queue({
       id: 0,
       number: 0,
       isDone: false,
       timestamp,
-      service: newService
+      service: newService,
     });
 
     expect(newQueue).toStrictEqual(expected);
@@ -88,7 +88,7 @@ describe("QueueResolver", () => {
       id: 1234,
       number: 1234,
       isDone: false,
-      timestamp
+      timestamp,
     });
 
     expect(targetQueue).not.toBeUndefined();
@@ -98,13 +98,13 @@ describe("QueueResolver", () => {
   it("updates entities", async () => {
     const targetQueue = await queueResolver.updateQueue(1234, {
       number: 1234,
-      isDone: true
+      isDone: true,
     });
     const expected = new Queue({
       id: 1234,
       number: 1234,
       isDone: true,
-      timestamp
+      timestamp,
     });
 
     expect(targetQueue).toStrictEqual(expected);
@@ -114,21 +114,21 @@ describe("QueueResolver", () => {
     const newService = new Service({
       id: 7,
       name: "Cleaning",
-      type: "A"
+      type: "A",
     });
     await serviceRepository.save(newService);
 
     const targetQueue = await queueResolver.updateQueue(1234, {
       number: 1234,
       isDone: true,
-      service: newService
+      service: newService,
     });
     const expected = new Queue({
       id: 1234,
       number: 1234,
       isDone: true,
       timestamp,
-      service: newService
+      service: newService,
     });
 
     expect(targetQueue).toStrictEqual(expected);
@@ -140,7 +140,7 @@ describe("QueueResolver", () => {
       id: 1234,
       number: 1234,
       isDone: false,
-      timestamp
+      timestamp,
     });
     const deletedQueue = await queueRepository.findOne(1234);
 

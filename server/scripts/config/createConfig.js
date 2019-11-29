@@ -13,20 +13,20 @@ export default function createConfig(isDevelopment) {
     entry: path.join(packagesDir, "src", "index.js"),
     externals: [
       nodeExternals({
-        modulesDir: path.join(packagesDir, "node_modules")
-      })
+        modulesDir: path.join(packagesDir, "node_modules"),
+      }),
     ],
     module: {
-      rules: [eslintLoader, babelLoader]
+      rules: [eslintLoader, babelLoader],
     },
     resolve: {
-      extensions: ["*", ".js", ".json"]
+      extensions: ["*", ".js", ".json"],
     },
     output: {
       filename: "index.js",
-      path: path.join(buildDir, "server")
+      path: path.join(buildDir, "server"),
     },
     watch: isDevelopment,
-    plugins: [new FriendlyErrorsWebpackPlugin()]
+    plugins: [new FriendlyErrorsWebpackPlugin()],
   };
 }

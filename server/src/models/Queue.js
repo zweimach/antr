@@ -3,7 +3,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   Column,
-  CreateDateColumn
+  CreateDateColumn,
 } from "typeorm";
 
 import Service from "./Service";
@@ -14,13 +14,13 @@ class Queue {
   id;
 
   @Column({
-    type: "integer"
+    type: "integer",
   })
   number;
 
   @Column({
     type: "boolean",
-    default: false
+    default: false,
   })
   isDone;
 

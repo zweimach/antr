@@ -14,7 +14,7 @@ export default class QueueResolver {
       await this.repository.update(id, {
         number,
         isDone,
-        service
+        service,
       });
     }
     if (service) {

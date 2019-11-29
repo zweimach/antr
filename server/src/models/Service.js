@@ -10,13 +10,13 @@ class Service {
   @Column({
     length: 1,
     type: "varchar",
-    unique: true
+    unique: true,
   })
   type;
 
   @Column({
     length: 50,
-    type: "varchar"
+    type: "varchar",
   })
   name;
 

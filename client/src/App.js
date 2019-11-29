@@ -6,7 +6,7 @@ import {
   Dashboard,
   HelpCenter,
   WaitList,
-  NotFound
+  NotFound,
 } from "./components";
 
 function App() {

@@ -20,7 +20,7 @@ describe("CounterController", () => {
       entities: [Counter, User],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     counterRepository = connection.getRepository(Counter);
@@ -45,14 +45,14 @@ describe("CounterController", () => {
   beforeEach(async () => {
     await counterRepository.save([
       new Counter({ id: 0, name: "Counter" }),
-      new Counter({ id: 1, name: "Counter" })
+      new Counter({ id: 1, name: "Counter" }),
     ]);
     await userRepository.save(
       new User({
         id: 12,
         fullname: "John Doe",
         username: "jdo",
-        password: "1234"
+        password: "1234",
       })
     );
   });
@@ -62,7 +62,7 @@ describe("CounterController", () => {
       const response = await supertest(server).get(route);
       const expected = withResponse(ApiStatus.Ok, [
         new Counter({ id: 0, name: "Counter" }),
-        new Counter({ id: 1, name: "Counter" })
+        new Counter({ id: 1, name: "Counter" }),
       ]);
 
       expect(response.status).toBe(ApiStatus.Ok);
@@ -148,8 +148,8 @@ describe("CounterController", () => {
           id: 12,
           fullname: "John Doe",
           username: "jdo",
-          password: "1234"
-        }
+          password: "1234",
+        },
       });
 
       expect(response.status).toBe(ApiStatus.Ok);

@@ -8,28 +8,28 @@ function WaitList() {
   const counterList = [
     {
       id: 1,
-      call: "A1"
+      call: "A1",
     },
     {
       id: 2,
-      call: "A5"
+      call: "A5",
     },
     {
       id: 3,
-      call: "B4"
+      call: "B4",
     },
     {
       id: 4,
-      call: "C7"
+      call: "C7",
     },
     {
       id: 5,
-      call: "D10"
+      call: "D10",
     },
     {
       id: 6,
-      call: "E1"
-    }
+      call: "E1",
+    },
   ];
 
   return (

@@ -9,9 +9,9 @@ const devServer = new WebpackDevServer(compiler, {
   publicPath: "",
   quiet: true,
   watchOptions: {
-    aggregateTimeout: 500
+    aggregateTimeout: 500,
   },
-  useLocalIp: true
+  useLocalIp: true,
 });
 
 devServer.listen(3000, "0.0.0.0");

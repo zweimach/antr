@@ -1,14 +1,14 @@
 export const babelLoader = {
   test: /\.(js|jsx)$/,
   exclude: /node_modules/,
-  loader: "babel-loader"
+  loader: "babel-loader",
 };
 
 export const eslintLoader = {
   test: /\.(js|jsx)$/,
   exclude: /node_modules/,
   enforce: "pre",
-  loader: "eslint-loader"
+  loader: "eslint-loader",
 };
 
 export const postcssLoader = {
@@ -16,7 +16,7 @@ export const postcssLoader = {
   exclude: /node_modules/,
   use: [
     {
-      loader: "style-loader"
+      loader: "style-loader",
     },
     {
       loader: "css-loader",
@@ -25,15 +25,15 @@ export const postcssLoader = {
         localsConvention: "camelCase",
         modules: {
           mode: "local",
-          localIdentName: "[name]__[local]--[hash:base64:5]"
+          localIdentName: "[name]__[local]--[hash:base64:5]",
         },
-        sourceMap: true
-      }
+        sourceMap: true,
+      },
     },
     {
-      loader: "postcss-loader"
-    }
-  ]
+      loader: "postcss-loader",
+    },
+  ],
 };
 
 export const fileLoader = {
@@ -43,8 +43,8 @@ export const fileLoader = {
     {
       loader: "url-loader",
       options: {
-        limit: 8192
-      }
-    }
-  ]
+        limit: 8192,
+      },
+    },
+  ],
 };

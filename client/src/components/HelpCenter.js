@@ -13,8 +13,8 @@ function HelpCenter() {
         "Permohonan PKP",
         "Permohonan Penetapan NE",
         "Permohonan Penghapusan NPWP",
-        "Cetak Ulang NPWP"
-      ]
+        "Cetak Ulang NPWP",
+      ],
     },
     {
       id: 1,
@@ -22,24 +22,24 @@ function HelpCenter() {
       items: [
         "Faktur Pajak",
         "Sertifikat Elektronik",
-        "Surat Permohonan Lainnya"
-      ]
+        "Surat Permohonan Lainnya",
+      ],
     },
     {
       id: 2,
       name: "SPT",
-      items: ["Pelaporan SPT Masa", "Pelaporan SPT Tahunan"]
+      items: ["Pelaporan SPT Masa", "Pelaporan SPT Tahunan"],
     },
     {
       id: 3,
       name: "NPWP Usahawan",
-      items: ["Pendaftaran NPWP OP Usahawan"]
+      items: ["Pendaftaran NPWP OP Usahawan"],
     },
     {
       id: 4,
       name: "Informasi & Helpdesk",
-      items: ["Informasi Perpajakan", "Konsultasi Perpajakan"]
-    }
+      items: ["Informasi Perpajakan", "Konsultasi Perpajakan"],
+    },
   ];
 
   return (

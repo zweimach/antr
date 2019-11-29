@@ -4,20 +4,20 @@ import browserPlugin from "router5-plugin-browser";
 const routes = [
   {
     name: "Home",
-    path: "/"
+    path: "/",
   },
   {
     name: "Dashboard",
-    path: "/dashboard"
+    path: "/dashboard",
   },
   {
     name: "HelpCenter",
-    path: "/helpcenter"
+    path: "/helpcenter",
   },
   {
     name: "WaitList",
-    path: "/waitlist"
-  }
+    path: "/waitlist",
+  },
 ];
 
 const routerOptions = {
@@ -28,19 +28,19 @@ const routerOptions = {
   queryParams: {
     arrayFormat: "brackets",
     nullFormat: "default",
-    booleanFormat: "empty-true"
+    booleanFormat: "empty-true",
   },
   queryParamsMode: "default",
   trailingSlashMode: "never",
   strictTrailingSlash: false,
-  caseSensitive: false
+  caseSensitive: false,
 };
 
 const router = createRouter(routes, routerOptions);
 
 router.usePlugin(
   browserPlugin({
-    useHash: true
+    useHash: true,
   })
 );
 

@@ -9,13 +9,13 @@ import {
   CounterController,
   QueueController,
   ServiceController,
-  UserController
+  UserController,
 } from "../controllers";
 import {
   CounterResolver,
   UserResolver,
   QueueResolver,
-  ServiceResolver
+  ServiceResolver,
 } from "../resolvers";
 import { Counter, User, Service, Queue } from "../models";
 

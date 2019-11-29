@@ -52,7 +52,7 @@ export default class ServiceController {
       id: parseInt(id),
       name,
       type,
-      queues: []
+      queues: [],
     });
 
     if (queues !== undefined) {

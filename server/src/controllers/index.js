@@ -7,5 +7,5 @@ export {
   CounterController,
   QueueController,
   ServiceController,
-  UserController
+  UserController,
 };

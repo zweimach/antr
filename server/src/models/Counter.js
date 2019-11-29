@@ -3,7 +3,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   OneToOne,
-  JoinColumn
+  JoinColumn,
 } from "typeorm";
 
 import User from "./User";
@@ -15,7 +15,7 @@ class Counter {
 
   @Column({
     length: 3,
-    type: "varchar"
+    type: "varchar",
   })
   name;
 

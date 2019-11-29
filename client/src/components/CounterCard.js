@@ -18,7 +18,7 @@ function CounterCard({ children, counter }) {
 
 CounterCard.propTypes = {
   children: PropTypes.node.isRequired,
-  counter: PropTypes.number.isRequired
+  counter: PropTypes.number.isRequired,
 };
 
 export default CounterCard;

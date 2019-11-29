@@ -6,7 +6,7 @@ import {
   queueRoutes,
   serviceRoutes,
   userRoutes,
-  setupRoutes
+  setupRoutes,
 } from "./routes";
 
 export default class Server {

@@ -19,7 +19,7 @@ async function startDatabase() {
       password,
       entities: [Counter, Queue, Service, User],
       logging: ["error", "log"],
-      synchronize: true
+      synchronize: true,
     });
   } catch (error) {
     /* eslint-disable no-console */

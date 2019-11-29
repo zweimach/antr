@@ -11,6 +11,6 @@ module.exports = {
   singleQuote: false,
   tabWidth: 2,
   quoteProps: "consistent",
-  trailingComma: "none",
-  useTabs: false
+  trailingComma: "es5",
+  useTabs: false,
 };

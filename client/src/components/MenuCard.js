@@ -26,7 +26,7 @@ function MenuCard({ children, items }) {
 
 MenuCard.propTypes = {
   children: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default MenuCard;

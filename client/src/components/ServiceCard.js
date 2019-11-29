@@ -19,7 +19,7 @@ function ServiceCard({ children, service }) {
 
 ServiceCard.propTypes = {
   children: PropTypes.string.isRequired,
-  service: PropTypes.string.isRequired
+  service: PropTypes.string.isRequired,
 };
 
 export default ServiceCard;

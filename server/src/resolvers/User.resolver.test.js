@@ -14,7 +14,7 @@ describe("UserResolver", () => {
       entities: [Counter, User],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     userRepository = connection.getRepository(User);
@@ -28,7 +28,7 @@ describe("UserResolver", () => {
         id: 1234,
         fullname: "John",
         username: "john",
-        password: "1234"
+        password: "1234",
       })
     );
   });
@@ -38,13 +38,13 @@ describe("UserResolver", () => {
       id: 0,
       fullname: "Hayes",
       username: "hayes",
-      password: "1234"
+      password: "1234",
     });
     const expected = new User({
       id: 0,
       fullname: "Hayes",
       username: "hayes",
-      password: "1234"
+      password: "1234",
     });
 
     expect(newUser).toStrictEqual(expected);
@@ -56,7 +56,7 @@ describe("UserResolver", () => {
       id: 1234,
       fullname: "John",
       username: "john",
-      password: "1234"
+      password: "1234",
     });
 
     expect(targetUser).not.toBeUndefined();
@@ -67,13 +67,13 @@ describe("UserResolver", () => {
     const targetUser = await userResolver.updateUser(1234, {
       fullname: "John Wick",
       username: "john12",
-      password: "1234john"
+      password: "1234john",
     });
     const expected = new User({
       id: 1234,
       fullname: "John Wick",
       username: "john12",
-      password: "1234john"
+      password: "1234john",
     });
 
     expect(targetUser).toStrictEqual(expected);
@@ -85,7 +85,7 @@ describe("UserResolver", () => {
       id: 1234,
       fullname: "John",
       username: "john",
-      password: "1234"
+      password: "1234",
     });
     const deletedUser = await userRepository.findOne(1234);
 

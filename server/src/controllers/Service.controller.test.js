@@ -20,7 +20,7 @@ describe("ServiceController", () => {
       entities: [Service, Queue],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     serviceRepository = connection.getRepository(Service);
@@ -45,7 +45,7 @@ describe("ServiceController", () => {
   beforeEach(async () => {
     await serviceRepository.save([
       new Service({ id: 0, name: "Service", type: "A" }),
-      new Service({ id: 1, name: "Service", type: "B" })
+      new Service({ id: 1, name: "Service", type: "B" }),
     ]);
     await queueRepository.save(new Queue({ id: 0, isDone: false, number: 1 }));
   });
@@ -60,7 +60,7 @@ describe("ServiceController", () => {
       const response = await supertest(server).get(route);
       const expected = withResponse(ApiStatus.Ok, [
         new Service({ id: 0, name: "Service", type: "A" }),
-        new Service({ id: 1, name: "Service", type: "B" })
+        new Service({ id: 1, name: "Service", type: "B" }),
       ]);
 
       expect(response.status).toBe(ApiStatus.Ok);
@@ -105,7 +105,7 @@ describe("ServiceController", () => {
         id: 2,
         name: "Service",
         type: "F",
-        queues: []
+        queues: [],
       });
       const response = await supertest(server)
         .post(route)
@@ -134,7 +134,7 @@ describe("ServiceController", () => {
         id: 0,
         name: "Updated",
         type: "Z",
-        queues: []
+        queues: [],
       });
       const response = await supertest(server)
         .put(route)
@@ -152,7 +152,7 @@ describe("ServiceController", () => {
         .send(updatedService);
       const expected = withResponse(ApiStatus.Ok, {
         ...updatedService,
-        queues: [{ id: 0, isDone: false, number: 1 }]
+        queues: [{ id: 0, isDone: false, number: 1 }],
       });
 
       response.body.data.queues.forEach(queue => delete queue.timestamp);

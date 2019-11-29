@@ -9,7 +9,7 @@ export default class ApiResponse {
     if (error) {
       this.error = {
         isError: true,
-        message: error.message
+        message: error.message,
       };
     }
   }

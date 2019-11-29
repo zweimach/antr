@@ -20,7 +20,7 @@ describe("QueueController", () => {
       entities: [Queue, Service],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     queueRepository = connection.getRepository(Queue);
@@ -45,7 +45,7 @@ describe("QueueController", () => {
   beforeEach(async () => {
     await queueRepository.save([
       new Queue({ id: 0, isDone: false, number: 1 }),
-      new Queue({ id: 1, isDone: false, number: 2 })
+      new Queue({ id: 1, isDone: false, number: 2 }),
     ]);
     await serviceRepository.save(
       new Service({ id: 7, name: "Cleaning", type: "A" })
@@ -62,7 +62,7 @@ describe("QueueController", () => {
       const response = await supertest(server).get(route);
       const expected = withResponse(ApiStatus.Ok, [
         new Queue({ id: 0, isDone: false, number: 1 }),
-        new Queue({ id: 1, isDone: false, number: 2 })
+        new Queue({ id: 1, isDone: false, number: 2 }),
       ]);
 
       response.body.data.forEach(queue => delete queue.timestamp);
@@ -152,7 +152,7 @@ describe("QueueController", () => {
         .send(updatedQueue);
       const expected = withResponse(ApiStatus.Ok, {
         ...updatedQueue,
-        service: await serviceRepository.findOneOrFail(7)
+        service: await serviceRepository.findOneOrFail(7),
       });
 
       delete response.body.data.timestamp;
@@ -166,7 +166,7 @@ describe("QueueController", () => {
         id: "ten",
         isDone: true,
         number: 3,
-        service: 7
+        service: 7,
       };
       let response = await supertest(server)
         .put(route)

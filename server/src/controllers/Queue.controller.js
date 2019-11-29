@@ -55,7 +55,7 @@ export default class QueueController {
     const queueInfo = new Queue({
       id: parseInt(id),
       isDone: Boolean(isDone),
-      number: parseInt(number)
+      number: parseInt(number),
     });
 
     if (service !== undefined) {
@@ -93,7 +93,7 @@ export default class QueueController {
     const queueInfo = new Queue({
       id: parseInt(id),
       isDone: Boolean(isDone),
-      number: parseInt(number)
+      number: parseInt(number),
     });
 
     if (service !== undefined) {

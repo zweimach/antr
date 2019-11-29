@@ -15,7 +15,7 @@ describe("CounterResolver", () => {
       entities: [Counter, User],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     counterRepository = connection.getRepository(Counter);
@@ -28,7 +28,7 @@ describe("CounterResolver", () => {
     const user = new User({
       fullname: "Dan Abramov",
       username: "gaearon",
-      password: "reactjs"
+      password: "reactjs",
     });
     await userRepository.save(user);
     const counter = new Counter({ id: 1234, name: "Counter 1234", user });
@@ -43,7 +43,7 @@ describe("CounterResolver", () => {
   it("inserts entities", async () => {
     const newCounter = await counterResolver.addCounter({
       id: 0,
-      name: "Counter 0"
+      name: "Counter 0",
     });
     const expected = new Counter({ id: 0, name: "Counter 0" });
 
@@ -55,14 +55,14 @@ describe("CounterResolver", () => {
       id: 0,
       fullname: "John Doe",
       username: "jdo",
-      password: "1234"
+      password: "1234",
     });
     await userRepository.save(newUser);
 
     const newCounter = await counterResolver.addCounter({
       id: 0,
       name: "Counter 0",
-      user: newUser
+      user: newUser,
     });
     const expected = new Counter({ id: 0, name: "Counter 0", user: newUser });
 
@@ -79,7 +79,7 @@ describe("CounterResolver", () => {
 
   it("updates entities", async () => {
     const targetCounter = await counterResolver.updateCounter(1234, {
-      name: "Counter 2"
+      name: "Counter 2",
     });
     const expected = new Counter({ id: 1234, name: "Counter 2" });
 
@@ -90,18 +90,18 @@ describe("CounterResolver", () => {
     const newUser = new User({
       fullname: "John Doe",
       username: "jdo",
-      password: "1234"
+      password: "1234",
     });
     await userRepository.save(newUser);
 
     const targetCounter = await counterResolver.updateCounter(1234, {
       name: "Counter 2",
-      user: newUser
+      user: newUser,
     });
     const expected = new Counter({
       id: 1234,
       name: "Counter 2",
-      user: newUser
+      user: newUser,
     });
 
     expect(targetCounter).toStrictEqual(expected);

@@ -19,5 +19,5 @@ export {
   MenuCard,
   NotFound,
   ServiceCard,
-  WaitList
+  WaitList,
 };

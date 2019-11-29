@@ -8,7 +8,7 @@ import {
   babelLoader,
   eslintLoader,
   fileLoader,
-  postcssLoader
+  postcssLoader,
 } from "./loaderConfig";
 import { packagesDir, buildDir } from "./getDirPath";
 
@@ -16,10 +16,10 @@ function getPlugins(isDevelopment) {
   const plugins = [
     new HtmlWebpackPlugin({
       template: path.join(packagesDir, "public", "index.html"),
-      filename: "index.html"
+      filename: "index.html",
     }),
     new FriendlyErrorsWebpackPlugin(),
-    new DotenvWebpackPlugin()
+    new DotenvWebpackPlugin(),
   ];
 
   if (!isDevelopment) {
@@ -36,16 +36,16 @@ export default function createConfig(isDevelopment) {
     devtool: isDevelopment ? "inline-source-map" : undefined,
     entry: path.join(packagesDir, "src", "index.js"),
     module: {
-      rules: [eslintLoader, babelLoader, postcssLoader, fileLoader]
+      rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
     },
     resolve: {
-      extensions: ["*", ".js", ".jsx", ".json"]
+      extensions: ["*", ".js", ".jsx", ".json"],
     },
     output: {
       filename: "bundle.js",
-      path: path.join(buildDir, "client")
+      path: path.join(buildDir, "client"),
     },
     watch: isDevelopment,
-    plugins: getPlugins(isDevelopment)
+    plugins: getPlugins(isDevelopment),
   };
 }

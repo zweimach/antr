@@ -10,18 +10,18 @@ class User {
   @Column({
     length: 50,
     type: "varchar",
-    unique: true
+    unique: true,
   })
   username;
 
   @Column({
-    type: "text"
+    type: "text",
   })
   password;
 
   @Column({
     length: 100,
-    type: "varchar"
+    type: "varchar",
   })
   fullname;
 

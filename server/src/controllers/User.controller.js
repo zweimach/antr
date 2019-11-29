@@ -54,7 +54,7 @@ export default class UserController {
       id: parseInt(id),
       fullname,
       username,
-      password
+      password,
     });
 
     return res.status(ApiStatus.Ok).json(withResponse(ApiStatus.Ok, newUser));

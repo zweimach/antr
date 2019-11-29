@@ -20,7 +20,7 @@ describe("UserController", () => {
       entities: [Counter, User],
       logging: false,
       dropSchema: true,
-      synchronize: true
+      synchronize: true,
     });
 
     counterRepository = connection.getRepository(Counter);
@@ -47,14 +47,14 @@ describe("UserController", () => {
         id: 0,
         fullname: "John Doe",
         username: "john",
-        password: "johndoe"
+        password: "johndoe",
       }),
       new User({
         id: 1,
         fullname: "Jane Doe",
         username: "jane",
-        password: "janedoe"
-      })
+        password: "janedoe",
+      }),
     ]);
     await counterRepository.save(new Counter({ id: 0, name: "Counter" }));
   });
@@ -67,14 +67,14 @@ describe("UserController", () => {
           id: 0,
           fullname: "John Doe",
           username: "john",
-          password: "johndoe"
+          password: "johndoe",
         }),
         new User({
           id: 1,
           fullname: "Jane Doe",
           username: "jane",
-          password: "janedoe"
-        })
+          password: "janedoe",
+        }),
       ]);
 
       expect(response.status).toBe(ApiStatus.Ok);
@@ -101,7 +101,7 @@ describe("UserController", () => {
           id: 1,
           fullname: "Jane Doe",
           username: "jane",
-          password: "janedoe"
+          password: "janedoe",
         })
       );
 
@@ -124,7 +124,7 @@ describe("UserController", () => {
         id: 2,
         fullname: "Bill",
         username: "bill",
-        password: "bill"
+        password: "bill",
       });
       const response = await supertest(server)
         .post(route)
@@ -140,7 +140,7 @@ describe("UserController", () => {
         id: "two",
         fullname: "Bill",
         username: "bill",
-        password: "bill"
+        password: "bill",
       };
       const response = await supertest(server)
         .post(route)
@@ -158,7 +158,7 @@ describe("UserController", () => {
         id: 0,
         fullname: "Updated",
         username: "johndoe",
-        password: "1234"
+        password: "1234",
       });
       const response = await supertest(server)
         .put(route)
@@ -174,7 +174,7 @@ describe("UserController", () => {
         id: "one",
         fullname: "Updated",
         password: "",
-        username: ""
+        username: "",
       };
       let response = await supertest(server)
         .put(route)
@@ -201,7 +201,7 @@ describe("UserController", () => {
         id: 0,
         fullname: "John Doe",
         username: "john",
-        password: "johndoe"
+        password: "johndoe",
       };
       const response = await supertest(server).delete(`${route}/0`);
       const expected = withResponse(ApiStatus.Ok, deletedUser);

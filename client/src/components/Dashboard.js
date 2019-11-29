@@ -10,7 +10,7 @@ function Dashboard() {
     { service: "C", id: "C", lastNumber: 0 },
     { service: "D", id: "D", lastNumber: 0 },
     { service: "E", id: "E", lastNumber: 0 },
-    { service: "F", id: "F", lastNumber: 0 }
+    { service: "F", id: "F", lastNumber: 0 },
   ];
 
   return (

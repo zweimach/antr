@@ -9,8 +9,9 @@ const compiler = webpack(createConfig(true));
 
 const developmentServer = new WebpackDevServer(compiler, {
   contentBase: path.join(buildDirectory, "client"),
+  historyApiFallback: true,
   hot: true,
-  publicPath: "",
+  publicPath: "/",
   quiet: true,
   watchOptions: {
     aggregateTimeout: 500,

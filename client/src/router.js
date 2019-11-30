@@ -40,7 +40,7 @@ const router = createRouter(routes, routerOptions);
 
 router.usePlugin(
   browserPlugin({
-    useHash: true,
+    useHash: false,
   })
 );
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./WaitList.css";
 import randomVideo from "../assets/videos/randomVideo.mp4";
-import CounterCard from "./CounterCard";
+import { CounterCard } from "../components";
 
 function WaitList() {
   const counterList = [

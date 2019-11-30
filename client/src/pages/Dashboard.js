@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Dashboard.css";
-import ServiceCard from "./ServiceCard";
+import { ServiceCard } from "../components";
 
 function Dashboard() {
   const serviceList = [

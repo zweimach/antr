@@ -2,13 +2,8 @@ import React from "react";
 import { useRoute } from "react-router5";
 import { hot } from "react-hot-loader/root";
 
-import {
-  Layout,
-  Dashboard,
-  HelpCenter,
-  WaitList,
-  NotFound,
-} from "./components";
+import { Dashboard, HelpCenter, WaitList, NotFound } from "./pages";
+import { Layout } from "./components";
 
 function App() {
   const { route } = useRoute();

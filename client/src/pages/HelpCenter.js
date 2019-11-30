@@ -1,6 +1,6 @@
 import React from "react";
 
-import MenuCard from "./MenuCard";
+import { MenuCard } from "../components";
 
 function HelpCenter() {
   const cardList = [

@@ -43,7 +43,7 @@ export default function createConfig(isDevelopment) {
       rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
     },
     resolve: {
-      extensions: ["*", ".js", ".jsx", ".json"],
+      extensions: [".js", ".json"],
       alias: isDevelopment
         ? { "react-dom": "@hot-loader/react-dom" }
         : undefined,

@@ -37,7 +37,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.test.{js,jsx}", "*.spec.{js,jsx}"],
+      files: ["*.test.js", "*.spec.js"],
       extends: ["plugin:jest/recommended", "plugin:jest/style"],
     },
     {

@@ -8,7 +8,10 @@ module.exports = {
     {
       test: ["client/**/*.js"],
       presets: ["@babel/preset-react"],
-      plugins: ["react-hot-loader/babel"],
+      plugins: [
+        "@babel/plugin-syntax-dynamic-import",
+        "react-hot-loader/babel",
+      ],
     },
     {
       test: ["server/**/*.js"],

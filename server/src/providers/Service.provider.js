@@ -1,4 +1,4 @@
-export default class ServiceResolver {
+export default class ServiceProvider {
   constructor(repository) {
     this.repository = repository;
   }

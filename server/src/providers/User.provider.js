@@ -1,4 +1,4 @@
-export default class UserResolver {
+export default class UserProvider {
   constructor(repository) {
     this.repository = repository;
   }

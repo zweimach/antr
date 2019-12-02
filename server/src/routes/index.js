@@ -12,11 +12,11 @@ import {
   UserController,
 } from "../controllers";
 import {
-  CounterResolver,
-  UserResolver,
-  QueueResolver,
-  ServiceResolver,
-} from "../resolvers";
+  CounterProvider,
+  UserProvider,
+  QueueProvider,
+  ServiceProvider,
+} from "../providers";
 import { Counter, User, Service, Queue } from "../models";
 
 export { counterRoutes, queueRoutes, serviceRoutes, userRoutes };
@@ -27,13 +27,13 @@ export function setupRoutes() {
   const serviceRepository = getRepository(Service);
   const userRepository = getRepository(User);
 
-  const counterResolver = new CounterResolver(counterRepository);
-  const queueResolver = new QueueResolver(queueRepository);
-  const serviceResolver = new ServiceResolver(serviceRepository);
-  const userResolver = new UserResolver(userRepository);
+  const counterProvider = new CounterProvider(counterRepository);
+  const queueProvider = new QueueProvider(queueRepository);
+  const serviceProvider = new ServiceProvider(serviceRepository);
+  const userProvider = new UserProvider(userRepository);
 
-  CounterController.setResolver(counterResolver, userResolver);
-  QueueController.setResolver(queueResolver, serviceResolver);
-  ServiceController.setResolver(serviceResolver, queueResolver);
-  UserController.setResolver(userResolver);
+  CounterController.setProvider(counterProvider, userProvider);
+  QueueController.setProvider(queueProvider, serviceProvider);
+  ServiceController.setProvider(serviceProvider, queueProvider);
+  UserController.setProvider(userProvider);
 }

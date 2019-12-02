@@ -2,12 +2,12 @@ import { ApiStatus, withResponse } from "../utils";
 import { Service } from "../models";
 
 export default class ServiceController {
-  static serviceResolver;
-  static queueResolver;
+  static serviceProvider;
+  static queueProvider;
 
-  static setResolver(serviceResolver, queueResolver) {
-    ServiceController.serviceResolver = serviceResolver;
-    ServiceController.queueResolver = queueResolver;
+  static setProvider(serviceProvider, queueProvider) {
+    ServiceController.serviceProvider = serviceProvider;
+    ServiceController.queueProvider = queueProvider;
   }
 
   static async getAllServices(request, response) {
@@ -16,13 +16,13 @@ export default class ServiceController {
       .json(
         withResponse(
           ApiStatus.Ok,
-          await ServiceController.serviceResolver.getAllServices()
+          await ServiceController.serviceProvider.getAllServices()
         )
       );
   }
 
   static async getService(request, response) {
-    const service = await ServiceController.serviceResolver.getService(
+    const service = await ServiceController.serviceProvider.getService(
       parseInt(request.params.id)
     );
 
@@ -59,7 +59,7 @@ export default class ServiceController {
 
     if (queues !== undefined) {
       const getQueryInfo = async queues => {
-        const queueInfo = await ServiceController.queueResolver.getQueue(
+        const queueInfo = await ServiceController.queueProvider.getQueue(
           parseInt(queues)
         );
         if (queueInfo) {
@@ -73,7 +73,7 @@ export default class ServiceController {
       await getQueryInfo(queues);
     }
 
-    const newService = await ServiceController.serviceResolver.addService(
+    const newService = await ServiceController.serviceProvider.addService(
       serviceInfo
     );
 
@@ -99,7 +99,7 @@ export default class ServiceController {
 
     if (queues !== undefined) {
       const getQueryInfo = async queues => {
-        const queueInfo = await ServiceController.queueResolver.getQueue(
+        const queueInfo = await ServiceController.queueProvider.getQueue(
           parseInt(queues)
         );
         if (queueInfo) {
@@ -114,7 +114,7 @@ export default class ServiceController {
     }
 
     try {
-      const updatedService = await ServiceController.serviceResolver.updateService(
+      const updatedService = await ServiceController.serviceProvider.updateService(
         parseInt(id),
         serviceInfo
       );
@@ -148,7 +148,7 @@ export default class ServiceController {
         .json(withResponse(ApiStatus.BadRequest));
     }
 
-    const deletedQueue = await ServiceController.serviceResolver.deleteService(
+    const deletedQueue = await ServiceController.serviceProvider.deleteService(
       parseInt(id)
     );
 

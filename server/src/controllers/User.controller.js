@@ -1,10 +1,10 @@
 import { ApiStatus, withResponse } from "../utils";
 
 export default class UserController {
-  static userResolver;
+  static userProvider;
 
-  static setResolver(userResolver) {
-    UserController.userResolver = userResolver;
+  static setProvider(userProvider) {
+    UserController.userProvider = userProvider;
   }
 
   static async getAllUsers(request, response) {
@@ -13,13 +13,13 @@ export default class UserController {
       .json(
         withResponse(
           ApiStatus.Ok,
-          await UserController.userResolver.getAllUsers()
+          await UserController.userProvider.getAllUsers()
         )
       );
   }
 
   static async getUser(request, response) {
-    const user = await UserController.userResolver.getUser(
+    const user = await UserController.userProvider.getUser(
       parseInt(request.params.id)
     );
 
@@ -50,7 +50,7 @@ export default class UserController {
         .json(withResponse(ApiStatus.BadRequest));
     }
 
-    const newUser = await UserController.userResolver.addUser({
+    const newUser = await UserController.userProvider.addUser({
       id: parseInt(id),
       fullname,
       username,
@@ -80,7 +80,7 @@ export default class UserController {
         .json(withResponse(ApiStatus.BadRequest));
     }
 
-    const updatedUser = await UserController.userResolver.updateUser(
+    const updatedUser = await UserController.userProvider.updateUser(
       parseInt(id),
       { username, fullname, password }
     );
@@ -109,7 +109,7 @@ export default class UserController {
         .json(withResponse(ApiStatus.BadRequest));
     }
 
-    const deletedUser = await UserController.userResolver.deleteUser(
+    const deletedUser = await UserController.userProvider.deleteUser(
       parseInt(id)
     );
 

@@ -4,7 +4,7 @@ import supertest from "supertest";
 import { createConnection } from "typeorm";
 
 import ServiceController from "./Service.controller";
-import { ServiceResolver, QueueResolver } from "../resolvers";
+import { ServiceProvider, QueueProvider } from "../providers";
 import { Service, Queue } from "../models";
 import { ApiStatus, withResponse } from "../utils";
 
@@ -26,10 +26,10 @@ describe("ServiceController", () => {
     serviceRepository = connection.getRepository(Service);
     queueRepository = connection.getRepository(Queue);
 
-    const serviceResolver = new ServiceResolver(serviceRepository);
-    const queueResolver = new QueueResolver(queueRepository);
+    const serviceProvider = new ServiceProvider(serviceRepository);
+    const queueProvider = new QueueProvider(queueRepository);
 
-    ServiceController.setResolver(serviceResolver, queueResolver);
+    ServiceController.setProvider(serviceProvider, queueProvider);
 
     server = express();
     const router = express.Router();

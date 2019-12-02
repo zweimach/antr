@@ -1,13 +1,13 @@
 import { createConnection } from "typeorm";
 
 import { Queue, Service } from "../models";
-import QueueResolver from "./Queue.resolver";
+import QueueProvider from "./Queue.provider";
 
-describe("QueueResolver", () => {
+describe("QueueProvider", () => {
   let connection;
   let queueRepository;
   let serviceRepository;
-  let queueResolver;
+  let queueProvider;
   let timestamp;
 
   beforeAll(async () => {
@@ -22,7 +22,7 @@ describe("QueueResolver", () => {
     queueRepository = connection.getRepository(Queue);
     serviceRepository = connection.getRepository(Service);
 
-    queueResolver = new QueueResolver(queueRepository);
+    queueProvider = new QueueProvider(queueRepository);
   });
 
   beforeEach(async () => {
@@ -42,7 +42,7 @@ describe("QueueResolver", () => {
   });
 
   it("inserts entities", async () => {
-    const newQueue = await queueResolver.addQueue({
+    const newQueue = await queueProvider.addQueue({
       id: 0,
       number: 0,
       isDone: false,
@@ -65,7 +65,7 @@ describe("QueueResolver", () => {
     });
     await serviceRepository.save(newService);
 
-    const newQueue = await queueResolver.addQueue({
+    const newQueue = await queueProvider.addQueue({
       id: 0,
       number: 0,
       isDone: false,
@@ -83,7 +83,7 @@ describe("QueueResolver", () => {
   });
 
   it("retrieves entities", async () => {
-    const targetQueue = await queueResolver.getQueue(1234);
+    const targetQueue = await queueProvider.getQueue(1234);
     const expected = new Queue({
       id: 1234,
       number: 1234,
@@ -96,7 +96,7 @@ describe("QueueResolver", () => {
   });
 
   it("updates entities", async () => {
-    const targetQueue = await queueResolver.updateQueue(1234, {
+    const targetQueue = await queueProvider.updateQueue(1234, {
       number: 1234,
       isDone: true,
     });
@@ -118,7 +118,7 @@ describe("QueueResolver", () => {
     });
     await serviceRepository.save(newService);
 
-    const targetQueue = await queueResolver.updateQueue(1234, {
+    const targetQueue = await queueProvider.updateQueue(1234, {
       number: 1234,
       isDone: true,
       service: newService,
@@ -135,7 +135,7 @@ describe("QueueResolver", () => {
   });
 
   it("deletes entities", async () => {
-    const targetQueue = await queueResolver.deleteQueue(1234);
+    const targetQueue = await queueProvider.deleteQueue(1234);
     const expected = new Queue({
       id: 1234,
       number: 1234,

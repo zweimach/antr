@@ -2,9 +2,9 @@ import { ApiStatus, withResponse } from "../utils";
 import { Counter } from "../models";
 
 export default class CounterController {
-  static setResolver(counterResolver, userResolver) {
-    CounterController.counterResolver = counterResolver;
-    CounterController.userResolver = userResolver;
+  static setProvider(counterProvider, userProvider) {
+    CounterController.counterProvider = counterProvider;
+    CounterController.userProvider = userProvider;
   }
 
   static async getAllCounters(request, response) {
@@ -13,13 +13,13 @@ export default class CounterController {
       .json(
         withResponse(
           ApiStatus.Ok,
-          await CounterController.counterResolver.getAllCounters()
+          await CounterController.counterProvider.getAllCounters()
         )
       );
   }
 
   static async getCounter(request, response) {
-    const counter = await CounterController.counterResolver.getCounter(
+    const counter = await CounterController.counterProvider.getCounter(
       parseInt(request.params.id)
     );
 
@@ -50,7 +50,7 @@ export default class CounterController {
     const counterInfo = new Counter({ id: parseInt(id), name });
 
     if (user !== undefined) {
-      const userInfo = await CounterController.userResolver.getUser(
+      const userInfo = await CounterController.userProvider.getUser(
         parseInt(user)
       );
 
@@ -59,7 +59,7 @@ export default class CounterController {
       }
     }
 
-    const newCounter = await CounterController.counterResolver.addCounter(
+    const newCounter = await CounterController.counterProvider.addCounter(
       counterInfo
     );
 
@@ -84,7 +84,7 @@ export default class CounterController {
     const counterInfo = new Counter({ name });
 
     if (user !== undefined) {
-      const userInfo = await CounterController.userResolver.getUser(
+      const userInfo = await CounterController.userProvider.getUser(
         parseInt(user)
       );
 
@@ -93,7 +93,7 @@ export default class CounterController {
       }
     }
 
-    const updatedCounter = await CounterController.counterResolver.updateCounter(
+    const updatedCounter = await CounterController.counterProvider.updateCounter(
       parseInt(id),
       counterInfo
     );
@@ -122,7 +122,7 @@ export default class CounterController {
         .json(withResponse(ApiStatus.BadRequest));
     }
 
-    const deletedUser = await CounterController.counterResolver.deleteCounter(
+    const deletedUser = await CounterController.counterProvider.deleteCounter(
       parseInt(id)
     );
 

@@ -4,7 +4,7 @@ import supertest from "supertest";
 import { createConnection } from "typeorm";
 
 import CounterController from "./Counter.controller";
-import { CounterResolver, UserResolver } from "../resolvers";
+import { CounterProvider, UserProvider } from "../providers";
 import { Counter, User } from "../models";
 import { ApiStatus, withResponse } from "../utils";
 
@@ -26,10 +26,10 @@ describe("CounterController", () => {
     counterRepository = connection.getRepository(Counter);
     userRepository = connection.getRepository(User);
 
-    const counterResolver = new CounterResolver(counterRepository);
-    const userResolver = new UserResolver(userRepository);
+    const counterProvider = new CounterProvider(counterRepository);
+    const userProvider = new UserProvider(userRepository);
 
-    CounterController.setResolver(counterResolver, userResolver);
+    CounterController.setProvider(counterProvider, userProvider);
 
     server = express();
     const router = express.Router();

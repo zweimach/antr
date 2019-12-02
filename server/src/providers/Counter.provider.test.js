@@ -1,13 +1,13 @@
 import { createConnection } from "typeorm";
 
 import { Counter, User } from "../models";
-import CounterResolver from "./Counter.resolver";
+import CounterProvider from "./Counter.provider";
 
-describe("CounterResolver", () => {
+describe("CounterProvider", () => {
   let connection;
   let counterRepository;
   let userRepository;
-  let counterResolver;
+  let counterProvider;
 
   beforeAll(async () => {
     connection = await createConnection({
@@ -21,7 +21,7 @@ describe("CounterResolver", () => {
     counterRepository = connection.getRepository(Counter);
     userRepository = connection.getRepository(User);
 
-    counterResolver = new CounterResolver(counterRepository);
+    counterProvider = new CounterProvider(counterRepository);
   });
 
   beforeEach(async () => {
@@ -41,7 +41,7 @@ describe("CounterResolver", () => {
   });
 
   it("inserts entities", async () => {
-    const newCounter = await counterResolver.addCounter({
+    const newCounter = await counterProvider.addCounter({
       id: 0,
       name: "Counter 0",
     });
@@ -59,7 +59,7 @@ describe("CounterResolver", () => {
     });
     await userRepository.save(newUser);
 
-    const newCounter = await counterResolver.addCounter({
+    const newCounter = await counterProvider.addCounter({
       id: 0,
       name: "Counter 0",
       user: newUser,
@@ -70,7 +70,7 @@ describe("CounterResolver", () => {
   });
 
   it("retrieves entities", async () => {
-    const targetCounter = await counterResolver.getCounter(1234);
+    const targetCounter = await counterProvider.getCounter(1234);
     const expected = new Counter({ id: 1234, name: "Counter 1234" });
 
     expect(targetCounter).not.toBeUndefined();
@@ -78,7 +78,7 @@ describe("CounterResolver", () => {
   });
 
   it("updates entities", async () => {
-    const targetCounter = await counterResolver.updateCounter(1234, {
+    const targetCounter = await counterProvider.updateCounter(1234, {
       name: "Counter 2",
     });
     const expected = new Counter({ id: 1234, name: "Counter 2" });
@@ -94,7 +94,7 @@ describe("CounterResolver", () => {
     });
     await userRepository.save(newUser);
 
-    const targetCounter = await counterResolver.updateCounter(1234, {
+    const targetCounter = await counterProvider.updateCounter(1234, {
       name: "Counter 2",
       user: newUser,
     });
@@ -108,7 +108,7 @@ describe("CounterResolver", () => {
   });
 
   it("deletes entities", async () => {
-    const targetCounter = await counterResolver.deleteCounter(1234);
+    const targetCounter = await counterProvider.deleteCounter(1234);
     const expected = new Counter({ id: 1234, name: "Counter 1234" });
     const deletedCounter = await counterRepository.findOne(1234);
 

@@ -1,4 +1,4 @@
-export default class CounterResolver {
+export default class CounterProvider {
   constructor(repository) {
     this.repository = repository;
   }

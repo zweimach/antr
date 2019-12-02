@@ -2,12 +2,12 @@ import { ApiStatus, withResponse } from "../utils";
 import { Queue } from "../models";
 
 export default class QueueController {
-  static queueResolver;
-  static serviceResolver;
+  static queueProvider;
+  static serviceProvider;
 
-  static setResolver(queueResolver, serviceResolver) {
-    QueueController.queueResolver = queueResolver;
-    QueueController.serviceResolver = serviceResolver;
+  static setProvider(queueProvider, serviceProvider) {
+    QueueController.queueProvider = queueProvider;
+    QueueController.serviceProvider = serviceProvider;
   }
 
   static async getAllQueues(request, response) {
@@ -16,13 +16,13 @@ export default class QueueController {
       .json(
         withResponse(
           ApiStatus.Ok,
-          await QueueController.queueResolver.getAllQueues()
+          await QueueController.queueProvider.getAllQueues()
         )
       );
   }
 
   static async getQueue(request, response) {
-    const queue = await QueueController.queueResolver.getQueue(
+    const queue = await QueueController.queueProvider.getQueue(
       parseInt(request.params.id)
     );
 
@@ -61,7 +61,7 @@ export default class QueueController {
     });
 
     if (service !== undefined) {
-      const serviceInfo = await QueueController.serviceResolver.getService(
+      const serviceInfo = await QueueController.serviceProvider.getService(
         parseInt(id)
       );
 
@@ -70,7 +70,7 @@ export default class QueueController {
       }
     }
 
-    const newQueue = await QueueController.queueResolver.addQueue(queueInfo);
+    const newQueue = await QueueController.queueProvider.addQueue(queueInfo);
 
     return response
       .status(ApiStatus.Ok)
@@ -101,7 +101,7 @@ export default class QueueController {
     });
 
     if (service !== undefined) {
-      const serviceInfo = await QueueController.serviceResolver.getService(
+      const serviceInfo = await QueueController.serviceProvider.getService(
         parseInt(service)
       );
 
@@ -110,7 +110,7 @@ export default class QueueController {
       }
     }
 
-    const updatedQueue = await QueueController.queueResolver.updateQueue(
+    const updatedQueue = await QueueController.queueProvider.updateQueue(
       parseInt(id),
       queueInfo
     );
@@ -139,7 +139,7 @@ export default class QueueController {
         .json(withResponse(ApiStatus.BadRequest));
     }
 
-    const deletedService = await QueueController.queueResolver.deleteQueue(
+    const deletedService = await QueueController.queueProvider.deleteQueue(
       parseInt(id)
     );
 

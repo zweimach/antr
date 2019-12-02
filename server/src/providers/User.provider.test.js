@@ -1,12 +1,12 @@
 import { createConnection } from "typeorm";
 
 import { Counter, User } from "../models";
-import UserResolver from "./User.resolver";
+import UserProvider from "./User.provider";
 
-describe("UserResolver", () => {
+describe("UserProvider", () => {
   let connection;
   let userRepository;
-  let userResolver;
+  let userProvider;
 
   beforeAll(async () => {
     connection = await createConnection({
@@ -19,7 +19,7 @@ describe("UserResolver", () => {
 
     userRepository = connection.getRepository(User);
 
-    userResolver = new UserResolver(userRepository);
+    userProvider = new UserProvider(userRepository);
   });
 
   beforeEach(async () => {
@@ -34,7 +34,7 @@ describe("UserResolver", () => {
   });
 
   it("inserts entities", async () => {
-    const newUser = await userResolver.addUser({
+    const newUser = await userProvider.addUser({
       id: 0,
       fullname: "Hayes",
       username: "hayes",
@@ -51,7 +51,7 @@ describe("UserResolver", () => {
   });
 
   it("retrieves entities", async () => {
-    const targetUser = await userResolver.getUser(1234);
+    const targetUser = await userProvider.getUser(1234);
     const expected = new User({
       id: 1234,
       fullname: "John",
@@ -64,7 +64,7 @@ describe("UserResolver", () => {
   });
 
   it("updates entities", async () => {
-    const targetUser = await userResolver.updateUser(1234, {
+    const targetUser = await userProvider.updateUser(1234, {
       fullname: "John Wick",
       username: "john12",
       password: "1234john",
@@ -80,7 +80,7 @@ describe("UserResolver", () => {
   });
 
   it("deletes entities", async () => {
-    const targetUser = await userResolver.deleteUser(1234);
+    const targetUser = await userProvider.deleteUser(1234);
     const expected = new User({
       id: 1234,
       fullname: "John",

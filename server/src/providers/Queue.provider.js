@@ -1,4 +1,4 @@
-export default class QueueResolver {
+export default class QueueProvider {
   constructor(repository) {
     this.repository = repository;
   }

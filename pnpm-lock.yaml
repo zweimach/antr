@@ -46,6 +46,7 @@ importers:
       jest: 24.9.0
       jest-transform-stub: 2.0.0
       lint-staged: 9.5.0
+      mysql: 2.17.1
       postcss-loader: 3.0.0
       postcss-preset-env: 6.7.0
       prettier: 1.19.1
@@ -111,6 +112,7 @@ importers:
       jest: 24.9.0
       jest-transform-stub: 2.0.0
       lint-staged: 9.5.0
+      mysql: 2.17.1
       postcss-loader: 3.0.0
       postcss-preset-env: 6.7.0
       prettier: 1.19.1
@@ -2339,7 +2341,6 @@ packages:
     resolution:
       integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
   /bignumber.js/7.2.1:
-    dev: false
     resolution:
       integrity: sha512-S4XzBk5sMB+Rcb/LNcpzXr57VRTxgAvaAEDAl1AwRx27j00hT84O6OkteE7u8UB3NuaaygCRrEpqox4uDOrbdQ==
   /binary-extensions/1.13.1:
@@ -7339,7 +7340,6 @@ packages:
       readable-stream: 2.3.6
       safe-buffer: 5.1.2
       sqlstring: 2.3.1
-    dev: false
     engines:
       node: ">= 0.6"
     resolution:
@@ -9970,7 +9970,6 @@ packages:
     resolution:
       integrity: sha512-vOVmnhXHUBd5hUhMYb4GBglPzz43Apwq6019hwFBCUhEkqVn9day2wYn9d0TYsJQA08+8Zl079A/IIcbUG/GtQ==
   /sqlstring/2.3.1:
-    dev: false
     engines:
       node: ">= 0.6"
     resolution:

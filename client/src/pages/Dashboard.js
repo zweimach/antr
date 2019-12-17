@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./Dashboard.css";
+import styles from "./Dashboard.module.css";
 import { ServiceCard } from "../components";
 
 function Dashboard() {

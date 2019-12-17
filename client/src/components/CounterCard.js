@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./CounterCard.css";
+import styles from "./CounterCard.module.css";
 
 function CounterCard({ children, counter }) {
   return (

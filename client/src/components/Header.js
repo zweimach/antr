@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
 
-import styles from "./Header.css";
+import styles from "./Header.module.css";
 import djpLogo from "../assets/images/djpLogo.png";
 import useInterval from "../hooks/useInterval";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./WaitList.css";
+import styles from "./WaitList.module.css";
 import randomVideo from "../assets/videos/randomVideo.mp4";
 import { CounterCard } from "../components";
 

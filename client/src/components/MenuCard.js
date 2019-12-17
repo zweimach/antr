@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./MenuCard.css";
+import styles from "./MenuCard.module.css";
 
 function MenuCard({ children, items }) {
   return (

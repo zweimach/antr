@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./ServiceCard.css";
+import styles from "./ServiceCard.module.css";
 
 function ServiceCard({ children, service }) {
   return (

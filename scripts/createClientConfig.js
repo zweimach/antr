@@ -8,7 +8,7 @@ import {
   babelLoader,
   eslintLoader,
   fileLoader,
-  postcssLoader,
+  cssLoader,
 } from "./loaderConfig";
 import { clientDirectory, buildDirectory } from "./getDirectoryPath";
 
@@ -40,7 +40,7 @@ export default function createConfig(isDevelopment) {
       path.join(clientDirectory, "src", "index.js"),
     ],
     module: {
-      rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
+      rules: [eslintLoader, babelLoader, cssLoader, fileLoader],
     },
     resolve: {
       extensions: [".js", ".json"],

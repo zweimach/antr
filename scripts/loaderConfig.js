@@ -11,27 +11,41 @@ export const eslintLoader = {
   loader: "eslint-loader",
 };
 
-export const postcssLoader = {
+export const cssLoader = {
   test: /\.css$/,
   exclude: /node_modules/,
-  use: [
+  oneOf: [
     {
-      loader: "style-loader",
-    },
-    {
-      loader: "css-loader",
-      options: {
-        importLoaders: 1,
-        localsConvention: "camelCase",
-        modules: {
-          mode: "local",
-          localIdentName: "[name]__[local]--[hash:base64:5]",
+      test: /\.module\.css$/,
+      use: [
+        "style-loader",
+        {
+          loader: "css-loader",
+          options: {
+            importLoaders: 1,
+            sourceMap: true,
+            localsConvention: "camelCase",
+            modules: {
+              mode: "local",
+              localIdentName: "[name]__[local]--[hash:base64:5]",
+            },
+          },
         },
-        sourceMap: true,
-      },
+        "postcss-loader",
+      ],
     },
     {
-      loader: "postcss-loader",
+      use: [
+        "style-loader",
+        {
+          loader: "css-loader",
+          options: {
+            importLoaders: 1,
+            sourceMap: true,
+          },
+        },
+        "postcss-loader",
+      ],
     },
   ],
 };

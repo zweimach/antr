@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./Layout.css";
+import styles from "./Layout.module.css";
 import Header from "./Header";
 import Footer from "./Footer";
 

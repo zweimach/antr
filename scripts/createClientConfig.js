@@ -2,6 +2,8 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import TerserWebpackPlugin from "terser-webpack-plugin";
 import DotenvWebpackPlugin from "dotenv-webpack";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import path from "path";
 
 import {
@@ -16,16 +18,20 @@ function getPlugins(isDevelopment) {
   const plugins = [
     new HtmlWebpackPlugin({
       template: path.join(clientDirectory, "public", "index.html"),
-      filename: "index.html",
-      minify: !isDevelopment,
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+      },
     }),
     new FriendlyErrorsWebpackPlugin(),
     new DotenvWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: isDevelopment
+        ? "[name].[hash].css"
+        : "[name].[contenthash].css",
+    }),
   ];
-
-  if (!isDevelopment) {
-    plugins.push(new TerserWebpackPlugin());
-  }
 
   return plugins;
 }
@@ -40,7 +46,7 @@ export default function createConfig(isDevelopment) {
       path.join(clientDirectory, "src", "index.js"),
     ],
     module: {
-      rules: [eslintLoader, babelLoader, cssLoader, fileLoader],
+      rules: [eslintLoader, babelLoader, cssLoader(isDevelopment), fileLoader],
     },
     resolve: {
       extensions: [".js", ".json"],
@@ -54,6 +60,7 @@ export default function createConfig(isDevelopment) {
     },
     watch: isDevelopment,
     optimization: {
+      minimizer: [new TerserWebpackPlugin(), new OptimizeCSSAssetsPlugin()],
       runtimeChunk: "single",
       splitChunks: {
         cacheGroups: {

@@ -1,3 +1,5 @@
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
 export const babelLoader = {
   test: /\.js$/,
   exclude: /node_modules/,
@@ -11,14 +13,19 @@ export const eslintLoader = {
   loader: "eslint-loader",
 };
 
-export const cssLoader = {
+export const cssLoader = isDevelopment => ({
   test: /\.css$/,
   exclude: /node_modules/,
   oneOf: [
     {
       test: /\.module\.css$/,
       use: [
-        "style-loader",
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: isDevelopment,
+          },
+        },
         {
           loader: "css-loader",
           options: {
@@ -36,7 +43,12 @@ export const cssLoader = {
     },
     {
       use: [
-        "style-loader",
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: isDevelopment,
+          },
+        },
         {
           loader: "css-loader",
           options: {
@@ -48,7 +60,7 @@ export const cssLoader = {
       ],
     },
   ],
-};
+});
 
 export const fileLoader = {
   test: /\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)/,

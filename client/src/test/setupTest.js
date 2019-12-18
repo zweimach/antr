@@ -1,11 +1,9 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
-import { RouterProvider } from "react-router5";
-
-import router from "../router";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const customRender = node => {
-  return render(<RouterProvider router={router}>{node}</RouterProvider>);
+  return render(<Router>{node}</Router>);
 };
 
 export * from "@testing-library/react";

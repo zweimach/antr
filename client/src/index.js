@@ -1,14 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { RouterProvider } from "react-router5";
+import * as ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import "./index.css";
 import App from "./App";
-import router from "./router";
 
 ReactDOM.render(
-  <RouterProvider router={router}>
+  <Router>
     <App />
-  </RouterProvider>,
+  </Router>,
   document.querySelector("#root")
 );

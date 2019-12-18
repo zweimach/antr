@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./Dashboard.module.css";
 import { ServiceCard } from "../components";
@@ -20,9 +21,15 @@ function Dashboard() {
           <p className={styles.title}>Dashboard</p>
         </div>
         <div className={styles.buttonGroup}>
-          <button className={styles.button}>HelpCenter</button>
-          <button className={styles.button}>WaitList</button>
-          <button className={styles.button}>Home</button>
+          <button className={styles.button}>
+            <Link to="/helpcenter">HelpCenter</Link>
+          </button>
+          <button className={styles.button}>
+            <Link to="/waitlist">WaitList</Link>
+          </button>
+          <button className={styles.button}>
+            <Link to="/">Home</Link>
+          </button>
         </div>
       </header>
       <main className={styles.content}>

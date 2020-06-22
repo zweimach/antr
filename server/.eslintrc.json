@@ -1,0 +1,15 @@
+{
+  "overrides": [
+    {
+      "files": ["src/**/*.js"],
+      "extends": ["plugin:node/recommended-module"],
+      "globals": {
+        "__dirname": "readonly",
+        "__filename": "readonly"
+      },
+      "rules": {
+        "node/no-unpublished-import": "off"
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:promise/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "prettier",
+    "prettier/unicorn"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        }
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.test.js", "*.spec.js"],
+      "extends": ["plugin:jest/recommended", "plugin:jest/style"]
+    }
+  ]
+}

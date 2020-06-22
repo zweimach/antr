@@ -1,0 +1,32 @@
+{
+  "overrides": [
+    {
+      "files": ["src/**/*.js"],
+      "env": {
+        "browser": true,
+        "node": false
+      },
+      "extends": [
+        "plugin:compat/recommended",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "prettier/react"
+      ],
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "plugins": ["react-hooks"],
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+      },
+      "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+      }
+    }
+  ]
+}

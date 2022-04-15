@@ -2,7 +2,8 @@
   "root": true,
   "env": {
     "es2022": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
@@ -27,14 +28,6 @@
       "rules": {
         "unicorn/prefer-module": "off"
       }
-    },
-    {
-      "files": [
-        "**/__tests__/**/*.{js,jsx}",
-        "*.test.{js,jsx}",
-        "*.spec.{js,jsx}"
-      ],
-      "extends": ["plugin:jest/recommended", "plugin:jest/style"]
     },
     {
       "files": ["src/**/*.jsx"],

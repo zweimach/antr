@@ -1,26 +1,17 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components";
 import { Dashboard, HelpCenter, NotFound, WaitList } from "./pages";
 
 function App() {
   return (
     <Layout>
-      <Switch>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route path="/helpcenter">
-          <HelpCenter />
-        </Route>
-        <Route path="/waitlist">
-          <WaitList />
-        </Route>
-        <Route path="/404">
-          <NotFound />
-        </Route>
-        <Redirect from="*" to="/404" />
-      </Switch>
+      <Routes>
+        <Route path="*" element={<NotFound />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/helpcenter" element={<HelpCenter />}></Route>
+        <Route path="/waitlist" element={<WaitList />}></Route>
+      </Routes>
     </Layout>
   );
 }

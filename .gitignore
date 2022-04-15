@@ -62,3 +62,6 @@ typings/
 
 # webpack build output
 build
+
+# vite build output
+dist/

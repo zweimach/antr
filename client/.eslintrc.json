@@ -1,31 +1,61 @@
 {
+  "root": true,
+  "env": {
+    "es2022": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:unicorn/recommended",
+    "plugin:import/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2022
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  },
   "overrides": [
     {
-      "files": ["src/**/*.js"],
+      "files": "{tailwind,postcss}.config.js",
+      "rules": {
+        "unicorn/prefer-module": "off"
+      }
+    },
+    {
+      "files": [
+        "**/__tests__/**/*.{js,jsx}",
+        "*.test.{js,jsx}",
+        "*.spec.{js,jsx}"
+      ],
+      "extends": ["plugin:jest/recommended", "plugin:jest/style"]
+    },
+    {
+      "files": ["src/**/*.jsx"],
       "env": {
         "browser": true,
         "node": false
       },
       "extends": [
-        "plugin:compat/recommended",
         "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended",
-        "prettier/react"
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended"
       ],
       "parserOptions": {
         "ecmaFeatures": {
           "jsx": true
         }
       },
-      "plugins": ["react-hooks"],
       "settings": {
         "react": {
           "version": "detect"
         }
-      },
-      "rules": {
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
       }
     }
   ]

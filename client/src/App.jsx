@@ -1,9 +1,7 @@
 import React from "react";
-import { hot } from "react-hot-loader/root";
-import { Switch, Route, Redirect } from "react-router-dom";
-
-import { Dashboard, HelpCenter, WaitList, NotFound } from "./pages";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Layout } from "./components";
+import { Dashboard, HelpCenter, NotFound, WaitList } from "./pages";
 
 function App() {
   return (
@@ -27,4 +25,4 @@ function App() {
   );
 }
 
-export default hot(App);
+export default App;

@@ -1,8 +1,4 @@
-import loadable from "@loadable/component";
-
-const Dashboard = loadable(() => import("./Dashboard"));
-const HelpCenter = loadable(() => import("./HelpCenter"));
-const NotFound = loadable(() => import("./NotFound"));
-const WaitList = loadable(() => import("./WaitList"));
-
-export { Dashboard, HelpCenter, NotFound, WaitList };
+export { default as Dashboard } from "./Dashboard";
+export { default as NotFound } from "./NotFound";
+export { default as HelpCenter } from "./HelpCenter";
+export { default as WaitList } from "./WaitList";

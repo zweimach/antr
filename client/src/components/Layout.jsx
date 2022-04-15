@@ -9,7 +9,7 @@ import Footer from "./Footer";
 function Layout({ children }) {
   const location = useLocation();
 
-  if (location.pathname.match(/^\/dashboard/)) {
+  if (/^\/dashboard/.test(location.pathname)) {
     return children;
   }
 
